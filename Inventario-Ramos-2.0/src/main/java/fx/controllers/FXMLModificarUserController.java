@@ -7,7 +7,12 @@ package fx.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import model.TipoUsuario;
 
 /**
  * FXML Controller class
@@ -16,23 +21,42 @@ import javafx.fxml.Initializable;
  */
 public class FXMLModificarUserController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
-    private FXMLPrincipalController principal;
-    
+      private FXMLPrincipalController principal;
+
     public void setPrincipal(FXMLPrincipalController principal) {
         this.principal = principal;
     }
-    
+
+    @FXML
+    private TextField fxNombre;
+    @FXML
+    private TextField fxApellidos;
+    @FXML
+    private TextField fxTelefono;
+    @FXML
+    private TextField fxMail;
+    @FXML
+    private TextField fxContrasenia;
+    @FXML
+    private TextField fxUser;
+    @FXML
+    private TextField fxDni;
+    @FXML
+    private ComboBox<TipoUsuario> fxComboTipos;
+
+    private Alert alertWarning;
+    private Alert alertInfo;
+    private Alert alertError;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        alertWarning = new Alert(Alert.AlertType.WARNING);
+        alertInfo = new Alert(Alert.AlertType.INFORMATION);
+        alertError = new Alert(Alert.AlertType.ERROR);
+    }
     public void volver(){
         principal.cargarPantallaOpciones();
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
     
 }

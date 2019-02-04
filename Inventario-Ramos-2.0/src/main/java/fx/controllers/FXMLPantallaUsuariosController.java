@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,6 +33,8 @@ public class FXMLPantallaUsuariosController implements Initializable {
     @FXML
     private TableColumn<User, Integer> fxTipo;
 
+    private User usuarioAModificar;
+
     private FXMLPrincipalController principal;
 
     public void setPrincipal(FXMLPrincipalController principal) {
@@ -43,14 +46,24 @@ public class FXMLPantallaUsuariosController implements Initializable {
     }
 
     public void clickActualizar() {
-        principal.cargarPantallaModificarUser();
+        if (fxTableUser.getSelectionModel().getSelectedItem() != null) {
+            usuarioAModificar = fxTableUser.getSelectionModel().getSelectedItem();
+            principal.cargarPantallaModificarUser();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Seleccione un usuario para actualizar. Gracias.");
+            alert.showAndWait();
+        }
+
     }
 
     public void mostrar() {
         fxTableUser.getItems().clear();
         fxTableUser.getItems().addAll(principal.getUsers());
         fxId.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getIdUsuario()));
-        fxUser.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNombre()));
+        fxUser.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUser()));
         fxTipo.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getTipo()));
     }
 
