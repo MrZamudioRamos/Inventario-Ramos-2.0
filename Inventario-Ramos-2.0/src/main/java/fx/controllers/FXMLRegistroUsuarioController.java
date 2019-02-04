@@ -2,8 +2,11 @@ package fx.controllers;
 
 import dao.implementaciones.DAOUsuariosImpl;
 import java.net.URL;
-import java.util.List;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.TipoUsuario;
 import model.User;
+import util.PasswordHash;
 
 /**
  * FXML Controller class
@@ -43,7 +47,6 @@ public class FXMLRegistroUsuarioController implements Initializable {
     @FXML
     private ComboBox<TipoUsuario> fxComboTipos;
 
-    //private List<TipoUsuario> usarios;
     private Alert alertWarning;
     private Alert alertInfo;
     private Alert alertError;
@@ -71,12 +74,19 @@ public class FXMLRegistroUsuarioController implements Initializable {
                 && !fxContrasenia.getText().equals("")
                 && !fxDni.getText().equals("")
                 && fxComboTipos.getSelectionModel().getSelectedItem() != null) {
+            String passHash = null;
+            try {
+                PasswordHash ph = new PasswordHash();
+                passHash = ph.createHash(fxContrasenia.getText());
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+                Logger.getLogger(FXMLRegistroUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             usuario = new User(fxNombre.getText(),
                     fxApellidos.getText(),
                     fxTelefono.getText(),
                     fxMail.getText(),
-                    fxContrasenia.getText(),
+                    passHash,
                     fxDni.getText(),
                     fxComboTipos.getSelectionModel().getSelectedItem().getIdTipoUsuario()
             );
@@ -95,15 +105,21 @@ public class FXMLRegistroUsuarioController implements Initializable {
                 alertError.setContentText("No se ha podido crear el usuario.");
                 alertError.showAndWait();
             }
-        }else {
+        } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
             alertWarning.showAndWait();
-            
+
         }
 
     }
 
     public void volver() {
+        fxNombre.setText("");
+        fxTelefono.setText("");
+        fxMail.setText("");
+        fxContrasenia.setText("");
+        fxDni.setText("");
+        fxComboTipos.getItems().clear();
         principal.cargarPantallaOpciones();
     }
 

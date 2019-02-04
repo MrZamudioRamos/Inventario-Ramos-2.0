@@ -22,42 +22,41 @@ import javafx.stage.Stage;
  * @author carlu
  */
 public class FXMLLoginController implements Initializable {
-    
+
     public void setMyStage(Stage myStage) {
         this.myStage = myStage;
     }
 
     private Stage myStage;
-    
+
     private String usuario;
-    
+
     private FXMLPrincipalController principal;
-    
+
     public void setPrincipal(FXMLPrincipalController principal) {
         this.principal = principal;
     }
-    
-    //MÉTODOS
 
+    //MÉTODOS
     public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }  
-    
+    }
+
     //variables Login
     @FXML
     private TextField fxUsuario;
-    
+
     @FXML
     private PasswordField fxContrasenia;
 
-  
     public void clickEntrar() {
-        DAOLoginImpl li = new DAOLoginImpl();
         
+        DAOLoginImpl li = new DAOLoginImpl();
+
         if (li.comprobarUser(fxUsuario.getText(), fxContrasenia.getText())) {
             principal.setUser(fxUsuario.getText());
             principal.cargarPantallaOpciones();
@@ -72,15 +71,20 @@ public class FXMLLoginController implements Initializable {
 
             alert.showAndWait();
         }
-        //principal.cargarPantallaOpciones();
+        limpiar();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-    public void check(){
-        
+
+    public void check() {
+
+    }
+
+    private void limpiar() {
+        fxUsuario.setText("");
+        fxContrasenia.setText("");
     }
 }
