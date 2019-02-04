@@ -26,7 +26,7 @@ public class DAOUsuariosImpl implements DAOUsuarios {
             QueryRunner qr = new QueryRunner();
 
             Number id = qr.insert(con,
-                    "INSERT INTO usuarios (nombre, apellido, telefono, mail, password, dni, tipo) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO usuarios (nombre, apellido, telefono, user, mail, password, dni, tipo) VALUES(?,?,?,?,?,?,?,?)",
                     new ScalarHandler<>(),
                     a.getNombre(),
                     a.getApellido(),
@@ -67,11 +67,12 @@ public class DAOUsuariosImpl implements DAOUsuarios {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    "UPDATE items set nombre = ?,  apellido = ?,  telefono= ?,  e-mail = ?,  password= ?,  dni = ?,  tipo= ? where idusuario=?",
+                    "UPDATE items set nombre = ?,  apellido = ?,  telefono= ?,  e-mail = ?, user = ?,  password= ?,  dni = ?,  tipo= ? where idusuario=?",
                     a.getNombre(),
                     a.getApellido(),
                     a.getTelefono(),
                     a.getMail(),
+                    a.getUser(),
                     a.getPassword(),
                     a.getDni(),
                     a.getTipo(),

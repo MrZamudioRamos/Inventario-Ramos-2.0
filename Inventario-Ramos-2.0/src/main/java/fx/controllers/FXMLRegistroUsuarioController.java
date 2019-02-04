@@ -43,6 +43,8 @@ public class FXMLRegistroUsuarioController implements Initializable {
     @FXML
     private TextField fxContrasenia;
     @FXML
+    private TextField fxUser;
+    @FXML
     private TextField fxDni;
     @FXML
     private ComboBox<TipoUsuario> fxComboTipos;
@@ -72,6 +74,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
                 && !fxTelefono.getText().equals("")
                 && !fxMail.getText().equals("")
                 && !fxContrasenia.getText().equals("")
+                && !fxUser.getText().equals("")
                 && !fxDni.getText().equals("")
                 && fxComboTipos.getSelectionModel().getSelectedItem() != null) {
             String passHash = null;
@@ -86,6 +89,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
                     fxApellidos.getText(),
                     fxTelefono.getText(),
                     fxMail.getText(),
+                    fxUser.getText(),
                     passHash,
                     fxDni.getText(),
                     fxComboTipos.getSelectionModel().getSelectedItem().getIdTipoUsuario()

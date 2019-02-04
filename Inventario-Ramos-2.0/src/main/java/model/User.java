@@ -7,28 +7,32 @@ public class User {
     private String apellido;
     private String telefono;
     private String mail;
+    private String user;
     private String password;
     private String dni;
     private int tipo;
 
-    public User(){}
-    
-    public User(int idusuario, String nombre, String apellido, String telefono, String mail, String password, String dni, int tipo) {
+    public User() {
+    }
+
+    public User(int idusuario, String nombre, String apellido, String telefono, String mail, String user, String password, String dni, int tipo) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.mail = mail;
+        this.user = user;
         this.password = password;
         this.dni = dni;
         this.tipo = tipo;
     }
 
-    public User(String nombre, String apellido, String telefono, String mail, String password, String dni, int tipo) {
+    public User(String nombre, String apellido, String telefono, String mail, String user, String password, String dni, int tipo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.mail = mail;
+        this.user = user;
         this.password = password;
         this.dni = dni;
         this.tipo = tipo;
@@ -72,6 +76,22 @@ public class User {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public int getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getPassword() {
