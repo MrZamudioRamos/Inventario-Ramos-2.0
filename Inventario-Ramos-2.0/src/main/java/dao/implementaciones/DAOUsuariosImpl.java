@@ -31,7 +31,9 @@ public class DAOUsuariosImpl implements DAOUsuarios {
                     a.getNombre(),
                     a.getApellido(),
                     a.getTelefono(),
-                    a.getMail(), a.getPassword(),
+                    a.getUser(),
+                    a.getMail(),
+                    a.getPassword(),
                     a.getDni(),
                     a.getTipo());
 

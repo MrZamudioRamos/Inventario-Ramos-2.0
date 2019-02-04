@@ -17,7 +17,6 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import util.PasswordHash;
 
-
 public class DAOLoginImpl implements DAOLogin {
 
     @Override
@@ -49,5 +48,28 @@ public class DAOLoginImpl implements DAOLogin {
         }
         return ok;
     }
-    
+
+    public String comprobarTipoUsuario() {
+        Connection con = null;
+        List<User> usuarios = null;
+        try {
+            con = DBConnectionPool.getInstance().getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            ResultSetHandler<List<User>> handler = new BeanListHandler<>(User.class);
+
+            usuarios = qr.query(con, "SELECT * FROM usuarios ", handler);
+
+            for (User us : usuarios) {
+                
+                
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "hola";
+    }
+
 }
