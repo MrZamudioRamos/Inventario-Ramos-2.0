@@ -57,6 +57,9 @@ public class FXMLModificarUserController implements Initializable {
     public void volver(){
         principal.cargarPantallaOpciones();
     }
+    public void guardar(){
+        
+    }
     
     
 }
