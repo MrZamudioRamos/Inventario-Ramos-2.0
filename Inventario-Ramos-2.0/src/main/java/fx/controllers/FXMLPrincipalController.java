@@ -65,6 +65,12 @@ public class FXMLPrincipalController implements Initializable {
     private FXMLModificarDatosController modificarDatosController;
     private AnchorPane pantallaModificarUser;
     private FXMLModificarUserController modificarUserController;
+    private AnchorPane pantallaActualizarLugar;
+    private FXMLActualizarLugaresController actualizarLugaresController;
+    private AnchorPane pantallaActualizarMarca;
+    private FXMLActualizarMarcaController actualizarMarcaController;
+    private AnchorPane pantallaActualizarProductos;
+    private FXMLActualizarProductosController actualizarProductosController;
 
     private ObservableList<Marca> marcas = FXCollections.observableArrayList();
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
@@ -301,6 +307,54 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLModificarUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     @FXML
+    public void precargarPantallaActualizarLugar() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLActualizarLugares.fxml"));
+            pantallaActualizarLugar = loaderMenu.load();
+            actualizarLugaresController
+                    = loaderMenu.getController();
+            actualizarLugaresController.setPrincipal(this);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLActualizarLugaresController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaActualizarMarca() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLActualizarMarca.fxml"));
+            pantallaActualizarMarca = loaderMenu.load();
+            actualizarMarcaController
+                    = loaderMenu.getController();
+            actualizarMarcaController.setPrincipal(this);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLActualizarMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaActualizarProductos() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLActualizarProductos.fxml"));
+            pantallaActualizarProductos = loaderMenu.load();
+            actualizarProductosController
+                    = loaderMenu.getController();
+            actualizarProductosController.setPrincipal(this);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLActualizarProductosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     //CARGAR PANTALLAS
     @FXML
@@ -371,6 +425,24 @@ public class FXMLPrincipalController implements Initializable {
         fxRoot.setCenter(pantallaModificarUser);
         fxMenu.setVisible(true);
     }
+    
+    @FXML
+    public void cargarPantallaActualizarLugares() {
+        fxRoot.setCenter(pantallaActualizarLugar);
+        fxMenu.setVisible(true);
+    }
+    
+    @FXML
+    public void cargarPantallaActualizarMarca() {
+        fxRoot.setCenter(pantallaActualizarMarca);
+        fxMenu.setVisible(true);
+    }
+    
+    @FXML
+    public void cargarPantallaActualizarProductos() {
+        fxRoot.setCenter(pantallaActualizarProductos);
+        fxMenu.setVisible(true);
+    }
 
     public void clickOpciones() {
         cargarPantallaOpciones();
@@ -389,6 +461,9 @@ public class FXMLPrincipalController implements Initializable {
         precargarPantallaUsuario();
         precargarPantallaModificarDatos();
         precargarPantallaModificarUser();
+        precargarPantallaActualizarLugar();
+        precargarPantallaActualizarMarca();
+        precargarPantallaActualizarProductos();
         cargarPantallaLogin();
     }
 

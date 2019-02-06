@@ -29,7 +29,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab text="Lugares">
+            <Tab fx:id="fxLugares" text="Lugares">
                <content>
                   <TableView fx:id="fxTableUbicaciones" prefHeight="342.0" prefWidth="909.0" style="-fx-background-color: red;">
                      <columns>
@@ -40,7 +40,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab text="Marcas">
+            <Tab fx:id="fxMarcas" text="Marcas">
                <content>
                   <TableView fx:id="fxTableMarcas" prefHeight="342.0" prefWidth="909.0" style="-fx-background-color: blue;">
                      <columns>

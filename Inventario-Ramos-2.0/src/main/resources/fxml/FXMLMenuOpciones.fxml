@@ -12,7 +12,6 @@
         <URL value="@/styles/fxmlmenuopciones.css" />
     </stylesheets>
    <children>
-      <Button layoutX="593.0" layoutY="278.0" mnemonicParsing="false" onAction="#modificarProduct" prefHeight="23.0" prefWidth="246.0" text="MODIFICAR PRODUCTO" />
       <Button layoutX="530.0" layoutY="515.0" mnemonicParsing="false" onAction="#salir" prefHeight="23.0" prefWidth="246.0" text="SALIR" />
       <Button layoutX="178.0" layoutY="515.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="23.0" prefWidth="246.0" text="CERRAR SESIÓN" />
       <Button layoutX="107.0" layoutY="233.0" mnemonicParsing="false" onAction="#registrarUser" prefHeight="23.0" prefWidth="246.0" text="REGISTRAR USUARIO" />
@@ -38,16 +37,15 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Text>
-      <Text layoutX="450.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lugar">
+      <Text layoutX="457.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lugar">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Text>
-      <Button layoutX="144.0" layoutY="401.0" mnemonicParsing="false" onAction="#listarLugar" prefHeight="31.0" prefWidth="179.0" text="LISTAR LUGAR" />
+      <Button layoutX="245.0" layoutY="401.0" mnemonicParsing="false" onAction="#listarLugar" prefHeight="31.0" prefWidth="179.0" text="LISTAR LUGAR" />
       <Button layoutX="107.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarUser" prefHeight="23.0" prefWidth="246.0" text="LISTAR USUARIOS" />
       <Button layoutX="593.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarProduct" prefHeight="23.0" prefWidth="246.0" text="LISTAR PRODUCTOS" />
-      <Button layoutX="383.0" layoutY="401.0" mnemonicParsing="false" onAction="#registrarLugar" prefHeight="31.0" prefWidth="187.0" text="REGISTRAR LUGAR" />
-      <Button layoutX="638.0" layoutY="401.0" mnemonicParsing="false" onAction="#modificarLugar" prefHeight="31.0" prefWidth="187.0" text="MODIFICAR LUGAR" />
-      <Button layoutX="593.0" layoutY="323.0" mnemonicParsing="false" onAction="#registrarMarca" prefHeight="27.0" prefWidth="246.0" text="REGISTRAR MARCA" />
+      <Button layoutX="530.0" layoutY="401.0" mnemonicParsing="false" onAction="#registrarLugar" prefHeight="31.0" prefWidth="187.0" text="REGISTRAR LUGAR" />
+      <Button layoutX="593.0" layoutY="275.0" mnemonicParsing="false" onAction="#registrarMarca" prefHeight="27.0" prefWidth="246.0" text="REGISTRAR MARCA" />
    </children>
 </AnchorPane>

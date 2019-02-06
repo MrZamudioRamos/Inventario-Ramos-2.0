@@ -15,6 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Marca;
@@ -28,6 +29,15 @@ import model.Ubicacion;
  */
 public class FXMLDatosController implements Initializable {
 
+    @FXML
+    private Tab fxProductos;
+    
+    @FXML
+    private Tab fxLugares;
+    
+    @FXML
+    private Tab fxMarcas;
+    
     @FXML
     private TableView<Producto> fxTableProductos;
 
@@ -148,6 +158,9 @@ public class FXMLDatosController implements Initializable {
         alertWarning = new Alert(Alert.AlertType.WARNING);
         alertInfo = new Alert(Alert.AlertType.INFORMATION);
         alertError = new Alert(Alert.AlertType.ERROR);
+        fxProductos.setClosable(false);
+        fxLugares.setClosable(false);
+        fxMarcas.setClosable(false);
     }
 
     public void clickEliminar() {
@@ -201,25 +214,15 @@ public class FXMLDatosController implements Initializable {
 
         if (fxTableProductos.getSelectionModel().getSelectedItem() != null) {
 
-            producto = fxTableProductos.getSelectionModel().getSelectedItem();
-
-            DAOProductoImpl dao = new DAOProductoImpl();
-
-            dao.modificar(producto);
-
+            principal.cargarPantallaActualizarProductos();
+            
         } else if (fxTableMarcas.getSelectionModel().getSelectedItem() != null) {
 
-            marca = fxTableMarcas.getSelectionModel().getSelectedItem();
-
-            principal.cargarPantallaModificarDatos();
+            principal.cargarPantallaActualizarMarca();
 
         } else if (fxTableUbicaciones.getSelectionModel().getSelectedItem() != null) {
 
-            ubicacion = fxTableUbicaciones.getSelectionModel().getSelectedItem();
-
-            DAOUbicacionImpl dao = new DAOUbicacionImpl();
-
-            dao.modificar(ubicacion);
+            principal.cargarPantallaActualizarLugares();
 
         } else {
 

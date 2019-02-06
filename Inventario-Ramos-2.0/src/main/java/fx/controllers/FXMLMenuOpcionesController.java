@@ -28,10 +28,6 @@ public class FXMLMenuOpcionesController implements Initializable {
         this.principal = principal;
     }
 
-    public void modificarProduct() {
-        principal.cargarPantallaModificarDatos();
-    }
-
     public void listarProduct() {
         principal.cargarPantallaDatos();
     }
@@ -52,9 +48,6 @@ public class FXMLMenuOpcionesController implements Initializable {
         principal.cargarPantallaRegistroUsuario();
     }
 
-    public void modificarLugar() {
-        principal.cargarPantallaModificarDatos();
-    }
 
     public void listarLugar() {
         principal.cargarPantallaDatos();
@@ -82,28 +75,6 @@ public class FXMLMenuOpcionesController implements Initializable {
         
     }
 
-    @FXML
-    private Button fxListUser;
-    @FXML
-    private Button fxAddUser;
-    @FXML
-    private Button fxEditUser;
-    @FXML
-    private Button fxListProducts;
-    @FXML
-    private Button fxAddProducts;
-    @FXML
-    private Button fxEditProducts;
-    @FXML
-    private Button fxListPlace;
-    @FXML
-    private Button fxAddPlace;
-    @FXML
-    private Button fxEditPlace;
-    @FXML
-    private Button fxCloseSession;
-    @FXML
-    private Button fxExit;
     @FXML
     private Label fxNombreUser;
 

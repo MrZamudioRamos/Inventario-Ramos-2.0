@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -9,10 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="636.0" style="-fx-background-color: #80ff80;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLRegistroProductoController">
-    <stylesheets>
-        <URL value="@/styles/fxmlregistroproducto.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLActualizarProductosController">
     <children>
       <TextField fx:id="fxNombre" layoutX="210.0" layoutY="83.0" prefHeight="3.0" prefWidth="291.0" />
       <TextField fx:id="fxCategoria" layoutX="210.0" layoutY="114.0" prefHeight="0.0" prefWidth="291.0" />
@@ -40,12 +36,12 @@
       <Label layoutX="121.0" layoutY="359.0" prefHeight="25.0" prefWidth="63.0" text="F-Salida" />
       <Label layoutX="121.0" layoutY="393.0" prefHeight="25.0" prefWidth="80.0" text="Precio" />
       <Label layoutX="121.0" layoutY="429.0" prefHeight="25.0" prefWidth="80.0" text="Estado" />
-      <Label layoutX="275.0" layoutY="22.0" prefHeight="53.0" prefWidth="161.0" text="Producto:" textAlignment="CENTER">
+      <Label layoutX="149.0" layoutY="14.0" prefHeight="53.0" prefWidth="356.0" text="Actualizar producto" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="453.0" layoutY="476.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="140.0" text="VOLVER" />
-      <Button layoutX="89.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickGuardar" prefHeight="25.0" prefWidth="127.0" text="GUARDAR" />
+      <Button layoutX="83.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="GUARDAR" />
+      <Button layoutX="470.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="25.0" prefWidth="127.0" text="VOLVER" />
    </children>
 </AnchorPane>
