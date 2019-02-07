@@ -54,7 +54,7 @@ public class FXMLLoginController implements Initializable {
     private PasswordField fxContrasenia;
 
     public void clickEntrar() {
-        
+
         DAOLoginImpl li = new DAOLoginImpl();
 
         if (li.comprobarUser(fxUsuario.getText(), fxContrasenia.getText())) {

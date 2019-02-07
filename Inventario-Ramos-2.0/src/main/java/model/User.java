@@ -10,12 +10,13 @@ public class User {
     private String user;
     private String password;
     private String dni;
-    private int tipo;
+    private boolean invent;
+    private boolean admin;
 
     public User() {
     }
 
-    public User(int idusuario, String nombre, String apellido, String telefono, String mail, String user, String password, String dni, int tipo) {
+    public User(int idusuario, String nombre, String apellido, String telefono, String mail, String user, String password, String dni, boolean invent, boolean admin) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,10 +25,11 @@ public class User {
         this.user = user;
         this.password = password;
         this.dni = dni;
-        this.tipo = tipo;
+        this.invent = invent;
+        this.admin = admin;
     }
 
-    public User(String nombre, String apellido, String telefono, String mail, String user, String password, String dni, int tipo) {
+    public User(String nombre, String apellido, String telefono, String mail, String user, String password, String dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -35,7 +37,6 @@ public class User {
         this.user = user;
         this.password = password;
         this.dni = dni;
-        this.tipo = tipo;
     }
 
     public int getIdUsuario() {
@@ -110,17 +111,27 @@ public class User {
         this.dni = dni;
     }
 
-    public int getTipo() {
-        return tipo;
+    public boolean isInvent() {
+        return invent;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public void setInvent(boolean invent) {
+        this.invent = invent;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override
     public String toString() {
-        return "User{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", mail=" + mail + ", password=" + password + ", dni=" + dni + ", tipo=" + tipo + '}';
+        return "User{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", mail=" + mail + ", user=" + user + ", password=" + password + ", dni=" + dni + ", invent=" + invent + ", admin=" + admin + '}';
     }
+
+
 
 }

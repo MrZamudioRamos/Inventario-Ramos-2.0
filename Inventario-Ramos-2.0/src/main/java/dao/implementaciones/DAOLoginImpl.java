@@ -38,7 +38,7 @@ public class DAOLoginImpl implements DAOLogin {
 
                 String passHasheada = us.getPassword();
 
-                if (us.getNombre().equals(user) && ph.validatePassword(pass, passHasheada)) {
+                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada)) {
                     ok = true;
                 }
 
@@ -49,27 +49,5 @@ public class DAOLoginImpl implements DAOLogin {
         return ok;
     }
 
-    public String comprobarTipoUsuario() {
-        Connection con = null;
-        List<User> usuarios = null;
-        try {
-            con = DBConnectionPool.getInstance().getConnection();
-
-            QueryRunner qr = new QueryRunner();
-
-            ResultSetHandler<List<User>> handler = new BeanListHandler<>(User.class);
-
-            usuarios = qr.query(con, "SELECT * FROM usuarios ", handler);
-
-            for (User us : usuarios) {
-                
-                
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return "hola";
-    }
 
 }

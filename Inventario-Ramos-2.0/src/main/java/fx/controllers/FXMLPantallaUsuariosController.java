@@ -64,7 +64,6 @@ public class FXMLPantallaUsuariosController implements Initializable {
         fxTableUser.getItems().addAll(principal.getUsers());
         fxId.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getIdUsuario()));
         fxUser.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUser()));
-        fxTipo.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getTipo()));
     }
 
     @Override

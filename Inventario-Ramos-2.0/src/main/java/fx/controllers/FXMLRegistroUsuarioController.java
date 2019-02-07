@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import model.TipoUsuario;
 import model.User;
 import util.PasswordHash;
 
@@ -46,8 +45,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
     private TextField fxUser;
     @FXML
     private TextField fxDni;
-    @FXML
-    private ComboBox<TipoUsuario> fxComboTipos;
+    
 
     private Alert alertWarning;
     private Alert alertInfo;
@@ -61,7 +59,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
     }
 
     public void mostrar() {
-        fxComboTipos.setItems(principal.getTipos());
+        
     }
 
     public void registrar() {
@@ -75,8 +73,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
                 && !fxMail.getText().equals("")
                 && !fxContrasenia.getText().equals("")
                 && !fxUser.getText().equals("")
-                && !fxDni.getText().equals("")
-                && fxComboTipos.getSelectionModel().getSelectedItem() != null) {
+                && !fxDni.getText().equals("")) {
             String passHash = null;
             try {
                 PasswordHash ph = new PasswordHash();
@@ -91,8 +88,7 @@ public class FXMLRegistroUsuarioController implements Initializable {
                     fxMail.getText(),
                     fxUser.getText(),
                     passHash,
-                    fxDni.getText(),
-                    fxComboTipos.getSelectionModel().getSelectedItem().getIdTipoUsuario()
+                    fxDni.getText()
             );
             DAOUsuariosImpl dao = new DAOUsuariosImpl();
 
@@ -123,7 +119,6 @@ public class FXMLRegistroUsuarioController implements Initializable {
         fxMail.setText("");
         fxContrasenia.setText("");
         fxDni.setText("");
-        fxComboTipos.getItems().clear();
         principal.cargarPantallaOpciones();
     }
 

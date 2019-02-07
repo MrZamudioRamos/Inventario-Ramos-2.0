@@ -3,7 +3,6 @@ package fx.controllers;
 import dao.implementaciones.DAOMarcaImpl;
 import dao.implementaciones.DAOProductoImpl;
 import dao.implementaciones.DAOTipoEstadoImpl;
-import dao.implementaciones.DAOTipoUsuarioImpl;
 import dao.implementaciones.DAOUbicacionImpl;
 import dao.implementaciones.DAOUsuariosImpl;
 import java.io.IOException;
@@ -22,7 +21,6 @@ import javafx.scene.layout.BorderPane;
 import model.Marca;
 import model.Producto;
 import model.TipoEstado;
-import model.TipoUsuario;
 import model.Ubicacion;
 import model.User;
 
@@ -74,7 +72,6 @@ public class FXMLPrincipalController implements Initializable {
 
     private ObservableList<Marca> marcas = FXCollections.observableArrayList();
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
-    private ObservableList<TipoUsuario> tipos = FXCollections.observableArrayList();
     private ObservableList<Ubicacion> ubicaciones = FXCollections.observableArrayList();
     private ObservableList<User> users = FXCollections.observableArrayList();
     private ObservableList<TipoEstado> estados = FXCollections.observableArrayList();
@@ -82,7 +79,6 @@ public class FXMLPrincipalController implements Initializable {
     DAOMarcaImpl dm = new DAOMarcaImpl();
     DAOProductoImpl dp = new DAOProductoImpl();
     DAOTipoEstadoImpl de = new DAOTipoEstadoImpl();
-    DAOTipoUsuarioImpl dt = new DAOTipoUsuarioImpl();
     DAOUbicacionImpl du = new DAOUbicacionImpl();
     DAOUsuariosImpl dus = new DAOUsuariosImpl();
 
@@ -102,13 +98,7 @@ public class FXMLPrincipalController implements Initializable {
         this.productos = productos;
     }
 
-    public ObservableList<TipoUsuario> getTipos() {
-        return tipos = FXCollections.observableArrayList(dt.getAll());
-    }
 
-    public void setTipos(ObservableList<TipoUsuario> tipos) {
-        this.tipos = tipos;
-    }
 
     public ObservableList<Ubicacion> getUbicaciones() {
         return ubicaciones = FXCollections.observableArrayList(du.getAll());

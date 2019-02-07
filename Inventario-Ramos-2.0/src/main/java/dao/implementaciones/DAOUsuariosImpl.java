@@ -26,7 +26,7 @@ public class DAOUsuariosImpl implements DAOUsuarios {
             QueryRunner qr = new QueryRunner();
 
             Number id = qr.insert(con,
-                    "INSERT INTO usuarios (nombre, apellido, telefono, user, mail, password, dni, tipo) VALUES(?,?,?,?,?,?,?,?)",
+                    "INSERT INTO usuarios (nombre, apellido, telefono, user, mail, password, dni, invent, admin) VALUES(?,?,?,?,?,?,?,?,?)",
                     new ScalarHandler<>(),
                     a.getNombre(),
                     a.getApellido(),
@@ -35,7 +35,8 @@ public class DAOUsuariosImpl implements DAOUsuarios {
                     a.getMail(),
                     a.getPassword(),
                     a.getDni(),
-                    a.getTipo());
+                    a.isInvent(),
+                    a.isAdmin());
 
             a.setIdUsuario(id.intValue());
             con.commit();
@@ -77,7 +78,8 @@ public class DAOUsuariosImpl implements DAOUsuarios {
                     a.getUser(),
                     a.getPassword(),
                     a.getDni(),
-                    a.getTipo(),
+                    a.isInvent(),
+                    a.isAdmin(),
                     a.getIdUsuario());
 
         } catch (Exception ex) {

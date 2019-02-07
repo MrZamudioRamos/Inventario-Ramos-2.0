@@ -10,9 +10,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import model.TipoUsuario;
 
 /**
  * FXML Controller class
@@ -42,7 +42,9 @@ public class FXMLModificarUserController implements Initializable {
     @FXML
     private TextField fxDni;
     @FXML
-    private ComboBox<TipoUsuario> fxComboTipos;
+    private CheckBox fxInventariador;
+    @FXML
+    private CheckBox fxAdministrador;
 
     private Alert alertWarning;
     private Alert alertInfo;
