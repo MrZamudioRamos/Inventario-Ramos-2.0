@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao.implementaciones;
 
 import dao.DAOLogin;
@@ -38,7 +33,7 @@ public class DAOLoginImpl implements DAOLogin {
 
                 String passHasheada = us.getPassword();
 
-                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada)) {
+                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada) && (us.isAdmin() || true && us.isInvent() == true)) {
                     ok = true;
                 }
 
@@ -47,6 +42,94 @@ public class DAOLoginImpl implements DAOLogin {
             Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ok;
+    }
+    
+    
+    public boolean UsuarioNormal (String user, String pass) {
+        boolean validar = false;
+        Connection con = null;
+        PasswordHash ph = new PasswordHash();
+        List<User> usuarios = null;
+        try {
+            con = DBConnectionPool.getInstance().getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            ResultSetHandler<List<User>> handler = new BeanListHandler<>(User.class);
+
+            usuarios = qr.query(con, "SELECT * FROM usuarios ", handler);
+
+            for (User us : usuarios) {
+
+                String passHasheada = us.getPassword();
+
+                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada) && us.isAdmin() != true && us.isInvent()!= true) {
+                    validar = true;
+                }
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return validar;
+    }
+    
+    public boolean Admin (String user, String pass) {
+        boolean validar = false;
+        Connection con = null;
+        PasswordHash ph = new PasswordHash();
+        List<User> usuarios = null;
+        try {
+            con = DBConnectionPool.getInstance().getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            ResultSetHandler<List<User>> handler = new BeanListHandler<>(User.class);
+
+            usuarios = qr.query(con, "SELECT * FROM usuarios ", handler);
+
+            for (User us : usuarios) {
+
+                String passHasheada = us.getPassword();
+
+                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada) && us.isAdmin() == true ) {
+                    validar = true;
+                }
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return validar;
+    }
+    
+    public boolean Invent (String user, String pass) {
+        boolean validar = false;
+        Connection con = null;
+        PasswordHash ph = new PasswordHash();
+        List<User> usuarios = null;
+        try {
+            con = DBConnectionPool.getInstance().getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            ResultSetHandler<List<User>> handler = new BeanListHandler<>(User.class);
+
+            usuarios = qr.query(con, "SELECT * FROM usuarios ", handler);
+
+            for (User us : usuarios) {
+
+                String passHasheada = us.getPassword();
+
+                if (us.getUser().equals(user) && ph.validatePassword(pass, passHasheada) && us.isInvent()== true) {
+                    validar = true;
+                }
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOLoginImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return validar;
     }
 
 

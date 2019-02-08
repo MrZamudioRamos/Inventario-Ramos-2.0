@@ -59,7 +59,18 @@ public class FXMLLoginController implements Initializable {
 
         if (li.comprobarUser(fxUsuario.getText(), fxContrasenia.getText())) {
             principal.setUser(fxUsuario.getText());
-            principal.cargarPantallaOpciones();
+            if(li.Admin(fxUsuario.getText(), fxContrasenia.getText())){
+                principal.cargarPantallaOpcionesAdmin();
+            }else if(li.Invent(fxUsuario.getText(), fxContrasenia.getText())){
+                principal.cargarPantallaOpcionesInvent();
+            }
+            
+            //principal.cargarPantallaOpciones();
+        } else if (li.UsuarioNormal(fxUsuario.getText(), fxContrasenia.getText())) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Usuario sin permisos");
+            alerta.setContentText("Usuario normal. No puedes acceder");
+            alerta.showAndWait();
         } else {
             fxUsuario.clear();
             fxContrasenia.clear();
@@ -67,6 +78,7 @@ public class FXMLLoginController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
+
             alert.setContentText("Usuario y/o contraseña incorrectos");
 
             alert.showAndWait();

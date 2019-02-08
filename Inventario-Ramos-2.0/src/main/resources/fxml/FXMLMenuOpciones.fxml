@@ -14,8 +14,8 @@
    <children>
       <Button layoutX="507.0" layoutY="341.0" mnemonicParsing="false" onAction="#salir" prefHeight="23.0" prefWidth="246.0" text="SALIR" />
       <Button layoutX="178.0" layoutY="341.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="23.0" prefWidth="246.0" text="CERRAR SESIÓN" />
-      <Button layoutX="55.0" layoutY="235.0" mnemonicParsing="false" onAction="#registrarUser" prefHeight="23.0" prefWidth="246.0" text="REGISTRAR USUARIO" />
-      <Button layoutX="362.0" layoutY="235.0" mnemonicParsing="false" onAction="#registrarProduct" prefHeight="23.0" prefWidth="246.0" text="REGISTRAR PRODUCTO" />
+      <Button fx:id="fxAddUsers" layoutX="55.0" layoutY="235.0" mnemonicParsing="false" onAction="#registrarUser" prefHeight="23.0" prefWidth="246.0" text="REGISTRAR USUARIO" />
+      <Button fx:id="fxAddProduct" layoutX="362.0" layoutY="235.0" mnemonicParsing="false" onAction="#registrarProduct" prefHeight="23.0" prefWidth="246.0" text="REGISTRAR PRODUCTO" />
       <Label layoutX="301.0" layoutY="74.0" prefHeight="47.0" prefWidth="179.0" text="BIENVENIDO" textAlignment="CENTER">
          <font>
             <Font name="Arial Black" size="24.0" />
@@ -41,10 +41,10 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Text>
-      <Button layoutX="683.0" layoutY="232.0" mnemonicParsing="false" onAction="#listarLugar" prefHeight="31.0" prefWidth="187.0" text="LISTAR LUGAR" />
-      <Button layoutX="55.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarUser" prefHeight="23.0" prefWidth="246.0" text="LISTAR USUARIOS" />
-      <Button layoutX="362.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarProduct" prefHeight="23.0" prefWidth="246.0" text="LISTAR PRODUCTOS" />
-      <Button layoutX="683.0" layoutY="186.0" mnemonicParsing="false" onAction="#registrarLugar" prefHeight="31.0" prefWidth="187.0" text="REGISTRAR LUGAR" />
-      <Button layoutX="362.0" layoutY="282.0" mnemonicParsing="false" onAction="#registrarMarca" prefHeight="27.0" prefWidth="246.0" text="REGISTRAR MARCA" />
+      <Button fx:id="fxListPlace" layoutX="683.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarLugar" prefHeight="31.0" prefWidth="187.0" text="LISTAR LUGAR" />
+      <Button fx:id="fxListUsers" layoutX="55.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarUser" prefHeight="23.0" prefWidth="246.0" text="LISTAR USUARIOS" />
+      <Button fx:id="fxListProduct" layoutX="362.0" layoutY="189.0" mnemonicParsing="false" onAction="#listarProduct" prefHeight="23.0" prefWidth="246.0" text="LISTAR PRODUCTOS" />
+      <Button fx:id="fxAddPlace" layoutX="683.0" layoutY="235.0" mnemonicParsing="false" onAction="#registrarLugar" prefHeight="31.0" prefWidth="187.0" text="REGISTRAR LUGAR" />
+      <Button fx:id="fxAddBrand" layoutX="362.0" layoutY="282.0" mnemonicParsing="false" onAction="#registrarMarca" prefHeight="27.0" prefWidth="246.0" text="REGISTRAR MARCA" />
    </children>
 </AnchorPane>

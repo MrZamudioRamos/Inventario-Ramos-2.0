@@ -177,6 +177,44 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLMenuOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @FXML
+    public void precargarPantallaOpcionesInvent() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLMenuOpciones.fxml"));
+            pantallaOpciones = loaderMenu.load();
+            opcionesController
+                    = loaderMenu.getController();
+            opcionesController.Invent();
+            opcionesController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLMenuOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaOpcionesAdmin() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLMenuOpciones.fxml"));
+            pantallaOpciones = loaderMenu.load();
+            opcionesController
+                    = loaderMenu.getController();
+            opcionesController.Admin();
+            opcionesController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLMenuOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
     public void precargarPantallaUsuario() {
@@ -370,6 +408,22 @@ public class FXMLPrincipalController implements Initializable {
         opcionesController.setLogin(this.getUser().toUpperCase());
         fxMenu.setVisible(true);
     }
+    
+    @FXML
+    public void cargarPantallaOpcionesAdmin() {
+        fxRoot.setCenter(pantallaOpciones);
+        opcionesController.setLogin(this.getUser().toUpperCase());
+        opcionesController.Admin();
+        fxMenu.setVisible(true);
+    }
+    
+    @FXML
+    public void cargarPantallaOpcionesInvent() {
+        fxRoot.setCenter(pantallaOpciones);
+        opcionesController.setLogin(this.getUser().toUpperCase());
+        opcionesController.Invent();
+        fxMenu.setVisible(true);
+    }
 
     @FXML
     public void cargarPantallaUsuario() {
@@ -446,6 +500,8 @@ public class FXMLPrincipalController implements Initializable {
         precargarPantallaLugar();
         precargarPantallaMarca();
         precargarPantallaOpciones();
+        precargarPantallaOpcionesAdmin();
+        precargarPantallaOpcionesInvent();
         precargarPantallaProducto();
         precargarPantallaRegistroUsuario();
         precargarPantallaUsuario();
