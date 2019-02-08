@@ -178,43 +178,6 @@ public class FXMLPrincipalController implements Initializable {
         }
     }
     
-    @FXML
-    public void precargarPantallaOpcionesInvent() {
-
-        try {
-            FXMLLoader loaderMenu = new FXMLLoader(
-                    getClass().getResource(
-                            "/fxml/FXMLMenuOpciones.fxml"));
-            pantallaOpciones = loaderMenu.load();
-            opcionesController
-                    = loaderMenu.getController();
-            opcionesController.Invent();
-            opcionesController.setPrincipal(this);
-
-        } catch (IOException ex) {
-
-            Logger.getLogger(FXMLMenuOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @FXML
-    public void precargarPantallaOpcionesAdmin() {
-
-        try {
-            FXMLLoader loaderMenu = new FXMLLoader(
-                    getClass().getResource(
-                            "/fxml/FXMLMenuOpciones.fxml"));
-            pantallaOpciones = loaderMenu.load();
-            opcionesController
-                    = loaderMenu.getController();
-            opcionesController.Admin();
-            opcionesController.setPrincipal(this);
-
-        } catch (IOException ex) {
-
-            Logger.getLogger(FXMLMenuOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     @FXML
     public void precargarPantallaUsuario() {
@@ -409,6 +372,7 @@ public class FXMLPrincipalController implements Initializable {
         fxMenu.setVisible(true);
     }
     
+    //Pantalla de opciones solo para el Administrador
     @FXML
     public void cargarPantallaOpcionesAdmin() {
         fxRoot.setCenter(pantallaOpciones);
@@ -417,6 +381,7 @@ public class FXMLPrincipalController implements Initializable {
         fxMenu.setVisible(true);
     }
     
+    //Pantalla de opciones solo para el Inventariador
     @FXML
     public void cargarPantallaOpcionesInvent() {
         fxRoot.setCenter(pantallaOpciones);
@@ -500,8 +465,6 @@ public class FXMLPrincipalController implements Initializable {
         precargarPantallaLugar();
         precargarPantallaMarca();
         precargarPantallaOpciones();
-        precargarPantallaOpcionesAdmin();
-        precargarPantallaOpcionesInvent();
         precargarPantallaProducto();
         precargarPantallaRegistroUsuario();
         precargarPantallaUsuario();

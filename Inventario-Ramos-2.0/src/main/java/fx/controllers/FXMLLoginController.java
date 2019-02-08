@@ -56,16 +56,22 @@ public class FXMLLoginController implements Initializable {
     public void clickEntrar() {
 
         DAOLoginImpl li = new DAOLoginImpl();
+        String usa = fxUsuario.getText();
+        String contrasenia = fxContrasenia.getText();
 
-        if (li.comprobarUser(fxUsuario.getText(), fxContrasenia.getText())) {
+        if (li.comprobarUser(usa, contrasenia)) {
+            
             principal.setUser(fxUsuario.getText());
-            if(li.Admin(fxUsuario.getText(), fxContrasenia.getText())){
+            
+            if(li.Admin(usa, contrasenia) && li.Invent(usa, contrasenia)== false){
                 principal.cargarPantallaOpcionesAdmin();
-            }else if(li.Invent(fxUsuario.getText(), fxContrasenia.getText())){
+            }else if(li.Invent(usa, contrasenia) && li.Admin(usa, contrasenia)== false){
                 principal.cargarPantallaOpcionesInvent();
+            }else if(li.Admin(usa, contrasenia)== true && li.Invent(usa, contrasenia)== true){
+                principal.cargarPantallaOpciones();
             }
             
-            //principal.cargarPantallaOpciones();
+            
         } else if (li.UsuarioNormal(fxUsuario.getText(), fxContrasenia.getText())) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Usuario sin permisos");

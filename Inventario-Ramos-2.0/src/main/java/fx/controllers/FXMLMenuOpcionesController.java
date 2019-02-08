@@ -21,7 +21,7 @@ public class FXMLMenuOpcionesController implements Initializable {
 
     @FXML
     private String log;
-    
+
     @FXML
     private Button fxListUsers;
     @FXML
@@ -63,7 +63,6 @@ public class FXMLMenuOpcionesController implements Initializable {
         principal.cargarPantallaRegistroUsuario();
     }
 
-
     public void listarLugar() {
         principal.cargarPantallaDatos();
     }
@@ -81,15 +80,19 @@ public class FXMLMenuOpcionesController implements Initializable {
     }
 
     public void cerrarSesion() {
+        fxAddProduct.setDisable(false);
+        fxAddBrand.setDisable(false);
+        fxAddUsers.setDisable(false);
+        fxAddPlace.setDisable(false);
         principal.cargarPantallaLogin();
     }
-    
-    public void Invent(){
+
+    public void Invent() {
         fxAddUsers.setDisable(true);
         fxAddPlace.setDisable(true);
     }
-    
-    public void Admin(){
+
+    public void Admin() {
         fxAddProduct.setDisable(true);
         fxAddBrand.setDisable(true);
     }
