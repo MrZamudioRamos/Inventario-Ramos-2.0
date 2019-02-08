@@ -35,8 +35,11 @@ public class ConfiguracionYaml {
     }
 
     private String user;
+    
     private String pass;
+    
     private String urlDB;
+    
     private String driverDB;
     private String userDB;
     private String passDB;
