@@ -45,7 +45,8 @@ public class FXMLRegistroUsuarioController implements Initializable {
     private TextField fxUser;
     @FXML
     private TextField fxDni;
-    
+
+    boolean comprobarDni = false;
 
     private Alert alertWarning;
     private Alert alertInfo;
@@ -59,13 +60,15 @@ public class FXMLRegistroUsuarioController implements Initializable {
     }
 
     public void mostrar() {
-        
+
     }
 
     public void registrar() {
 
         User usuario;
         int lineas;
+        int numero;
+        boolean comprobar = false;
 
         if (!fxNombre.getText().equals("")
                 && !fxApellidos.getText().equals("")
@@ -74,41 +77,66 @@ public class FXMLRegistroUsuarioController implements Initializable {
                 && !fxContrasenia.getText().equals("")
                 && !fxUser.getText().equals("")
                 && !fxDni.getText().equals("")) {
-            String passHash = null;
-            try {
-                PasswordHash ph = new PasswordHash();
-                passHash = ph.createHash(fxContrasenia.getText());
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-                Logger.getLogger(FXMLRegistroUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            if (fxTelefono.getText().length() == 9) {
+                if (comprobar == false) {
+                    try {
+                        numero = Integer.parseInt(fxTelefono.getText());
+                        comprobar = true;
+                    } catch (NumberFormatException e) {
+                        alertWarning.setContentText("El teléfono sólo tiene números");
+                        alertWarning.showAndWait();
+                    }
 
-            usuario = new User(fxNombre.getText(),
-                    fxApellidos.getText(),
-                    fxTelefono.getText(),
-                    fxMail.getText(),
-                    fxUser.getText(),
-                    passHash,
-                    fxDni.getText()
-            );
-            DAOUsuariosImpl dao = new DAOUsuariosImpl();
+                }
 
-            lineas = dao.insertar(usuario);
+                if (comprobar == true) {
+                    validarDni();
+                    if (comprobarDni == true) {
+                        String passHash = null;
+                        try {
+                            PasswordHash ph = new PasswordHash();
+                            passHash = ph.createHash(fxContrasenia.getText());
+                        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+                            Logger.getLogger(FXMLRegistroUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
-            if (lineas < 0) {
-                alertInfo.setContentText("Usuario creado.");
-                alertInfo.showAndWait();
+                        usuario = new User(fxNombre.getText(),
+                                fxApellidos.getText(),
+                                fxTelefono.getText(),
+                                fxMail.getText(),
+                                fxUser.getText(),
+                                passHash,
+                                fxDni.getText()
+                        );
+                        DAOUsuariosImpl dao = new DAOUsuariosImpl();
 
-            } else if (lineas == -2) {
-                alertError.setContentText("Usuario duplicado.");
-                alertError.showAndWait();
+                        lineas = dao.insertar(usuario);
+
+                        if (lineas < 0) {
+                            alertInfo.setContentText("Usuario creado.");
+                            alertInfo.showAndWait();
+
+                        } else if (lineas == -2) {
+                            alertError.setContentText("Usuario duplicado.");
+                            alertError.showAndWait();
+                        } else {
+                            alertError.setContentText("No se ha podido crear el usuario.");
+                            alertError.showAndWait();
+                        }
+                    }else{
+                        alertWarning.setContentText("Tipo DNI 00000000A");
+                        alertWarning.showAndWait();
+                    }
+                }
+
             } else {
-                alertError.setContentText("No se ha podido crear el usuario.");
-                alertError.showAndWait();
+                alertWarning.setContentText("El numero de telefono debe tener 9 dígitos");
+                alertWarning.showAndWait();
             }
+
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
             alertWarning.showAndWait();
-
         }
 
     }
@@ -121,5 +149,47 @@ public class FXMLRegistroUsuarioController implements Initializable {
         fxDni.setText("");
         principal.cargarPantallaOpciones();
     }
+    
+    public boolean validarDni(){
+        
+        String letraMayuscula="";
+        if (fxDni.getText().length()!=9 || Character.isLetter(this.fxDni.getText().charAt(8))==false) {
+            return false;
+        }  
+        letraMayuscula = (this.fxDni.getText().substring(8).toUpperCase());
+        
+        if(soloNumeros() == true) {
+            comprobarDni = true;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public boolean soloNumeros() {
+ 
+            int i, j = 0;
+            String numero = "";
+            String miDNI = "";
+            String[] unoNueve = {"0","1","2","3","4","5","6","7","8","9"};
+ 
+            for(i = 0; i < this.fxDni.getText().length() - 1; i++) {
+                numero = this.fxDni.getText().substring(i, i+1);
+ 
+                for(j = 0; j < unoNueve.length; j++) {
+                    if(numero.equals(unoNueve[j])) {
+                        miDNI += unoNueve[j];
+                    }
+                }
+            }
+            
+            if(miDNI.length() != 8) {
+                return false;
+            }
+            else {
+            return true;
+        }
+    }      
 
 }
