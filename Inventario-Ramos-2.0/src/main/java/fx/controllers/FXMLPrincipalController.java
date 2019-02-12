@@ -42,6 +42,11 @@ public class FXMLPrincipalController implements Initializable {
     public void setUser(String user) {
         this.user = user;
     }
+    
+    private User usuario;
+    private Marca marca;
+    private Producto producto;
+    private Ubicacion lugar;
 
     private AnchorPane pantallaLogin;
     private FXMLLoginController logincontroller;
@@ -97,9 +102,7 @@ public class FXMLPrincipalController implements Initializable {
     public void setProductos(ObservableList<Producto> productos) {
         this.productos = productos;
     }
-
-
-
+    
     public ObservableList<Ubicacion> getUbicaciones() {
         return ubicaciones = FXCollections.observableArrayList(du.getAll());
     }
@@ -298,7 +301,7 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLModificarUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
      @FXML
     public void precargarPantallaActualizarLugar() {
 
@@ -330,7 +333,7 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLActualizarMarcaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaActualizarProductos() {
 
@@ -431,24 +434,28 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaModificarUser() {
+        modificarUserController.cargar();
         fxRoot.setCenter(pantallaModificarUser);
         fxMenu.setVisible(true);
     }
     
     @FXML
     public void cargarPantallaActualizarLugares() {
+        actualizarLugaresController.cargar();
         fxRoot.setCenter(pantallaActualizarLugar);
         fxMenu.setVisible(true);
     }
     
     @FXML
     public void cargarPantallaActualizarMarca() {
+        actualizarMarcaController.cargar();
         fxRoot.setCenter(pantallaActualizarMarca);
         fxMenu.setVisible(true);
     }
     
     @FXML
     public void cargarPantallaActualizarProductos() {
+        actualizarProductosController.cargar();
         fxRoot.setCenter(pantallaActualizarProductos);
         fxMenu.setVisible(true);
     }
@@ -458,6 +465,38 @@ public class FXMLPrincipalController implements Initializable {
         fxMenu.setVisible(true);
     }
 
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Ubicacion getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Ubicacion lugar) {
+        this.lugar = lugar;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         precargarPantallaLogin();

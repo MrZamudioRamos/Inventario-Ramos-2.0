@@ -25,7 +25,7 @@
       </Label>
       <TextField fx:id="fxNombre" layoutX="264.0" layoutY="122.0" prefHeight="25.0" prefWidth="250.0" />
       <TextField fx:id="fxDescripcion" layoutX="264.0" layoutY="211.0" prefHeight="25.0" prefWidth="242.0" />
-      <Button fx:id="fxCrear" layoutX="159.0" layoutY="308.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="102.0" text="GUARDAR" />
+      <Button fx:id="fxCrear" layoutX="159.0" layoutY="308.0" mnemonicParsing="false" onAction="#clickGuardar" prefHeight="44.0" prefWidth="102.0" text="GUARDAR" />
       <Button layoutX="334.0" layoutY="308.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="44.0" prefWidth="102.0" text="VOLVER" />
    </children>
 </AnchorPane>

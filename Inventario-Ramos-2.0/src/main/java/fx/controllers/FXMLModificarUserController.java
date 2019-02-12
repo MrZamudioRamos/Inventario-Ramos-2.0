@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 /**
@@ -36,11 +35,7 @@ public class FXMLModificarUserController implements Initializable {
     @FXML
     private TextField fxMail;
     @FXML
-    private TextField fxContrasenia;
-    @FXML
     private TextField fxUser;
-    @FXML
-    private TextField fxDni;
     @FXML
     private CheckBox fxInventariador;
     @FXML
@@ -56,6 +51,15 @@ public class FXMLModificarUserController implements Initializable {
         alertInfo = new Alert(Alert.AlertType.INFORMATION);
         alertError = new Alert(Alert.AlertType.ERROR);
     }
+    
+    public void cargar(){
+        fxNombre.setText(principal.getUsuario().getNombre());
+        fxApellidos.setText(principal.getUsuario().getApellido());
+        fxTelefono.setText(principal.getUsuario().getTelefono());
+        fxMail.setText(principal.getUsuario().getMail());
+        fxUser.setText(principal.getUsuario().getUser());        
+    }
+    
     public void volver(){
         principal.cargarPantallaOpciones();
     }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLActualizarProductosController">
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLActualizarProductosController">
     <children>
       <TextField fx:id="fxNombre" layoutX="210.0" layoutY="83.0" prefHeight="3.0" prefWidth="291.0" />
       <TextField fx:id="fxCategoria" layoutX="210.0" layoutY="114.0" prefHeight="0.0" prefWidth="291.0" />
@@ -41,7 +41,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="83.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="GUARDAR" />
+      <Button layoutX="83.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickGuardar" prefHeight="25.0" prefWidth="140.0" text="GUARDAR" />
       <Button layoutX="470.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="25.0" prefWidth="127.0" text="VOLVER" />
    </children>
 </AnchorPane>

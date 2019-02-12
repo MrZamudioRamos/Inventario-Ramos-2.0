@@ -18,6 +18,6 @@
          </font>
       </Label>
       <Button layoutX="358.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="62.0" prefWidth="120.0" text="VOLVER" />
-      <Button layoutX="186.0" layoutY="313.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="120.0" text="GUARDAR" />
+      <Button layoutX="186.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickGuardar" prefHeight="62.0" prefWidth="120.0" text="GUARDAR" />
    </children>
 </AnchorPane>

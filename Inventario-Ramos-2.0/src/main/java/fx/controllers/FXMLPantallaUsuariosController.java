@@ -13,41 +13,42 @@ import javafx.scene.control.TableView;
 import model.User;
 
 public class FXMLPantallaUsuariosController implements Initializable {
-
+    
     @FXML
     private Button fxRefresh;
     @FXML
     private Button fxDelete;
     @FXML
     private Button fxBack;
-
+    
     @FXML
     private TableView<User> fxTableUser;
-
+    
     @FXML
     private TableColumn<User, Integer> fxId;
-
+    
     @FXML
     private TableColumn<User, String> fxUser;
-
+    
     @FXML
     private TableColumn<User, Integer> fxTipo;
-
+    
     private User usuarioAModificar;
-
+    
     private FXMLPrincipalController principal;
-
+    
     public void setPrincipal(FXMLPrincipalController principal) {
         this.principal = principal;
     }
-
+    
     public void volver() {
         principal.cargarPantallaOpciones();
     }
-
+    
     public void clickActualizar() {
         if (fxTableUser.getSelectionModel().getSelectedItem() != null) {
             usuarioAModificar = fxTableUser.getSelectionModel().getSelectedItem();
+            principal.setUsuario(usuarioAModificar);
             principal.cargarPantallaModificarUser();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -56,19 +57,19 @@ public class FXMLPantallaUsuariosController implements Initializable {
             alert.setContentText("Seleccione un usuario para actualizar. Gracias.");
             alert.showAndWait();
         }
-
+        
     }
-
+    
     public void mostrar() {
         fxTableUser.getItems().clear();
         fxTableUser.getItems().addAll(principal.getUsers());
         fxId.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getIdUsuario()));
         fxUser.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUser()));
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
 }
