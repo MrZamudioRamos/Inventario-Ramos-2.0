@@ -5,7 +5,9 @@
  */
 package fx.controllers;
 
+import dao.implementaciones.DAOProductoImpl;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -89,6 +91,38 @@ public class FXMLActualizarProductosController implements Initializable {
     }
 
     public void clickGuardar() {
+        
+        boolean comprobar = false;
+        double precio;
+        
+        if (!fxNombre.getText().equals("") && !fxPrecio.getText().equals("") && !fxCategoria.getText().equals("")
+                && !fxModelo.getText().equals("") && !fxDescripcion.getText().equals("")
+                && fxMarca.getSelectionModel().getSelectedItem() != null
+                && fxUbicacion.getSelectionModel().getSelectedItem() != null
+                && fxResponsable.getSelectionModel().getSelectedItem() != null
+                && fxEstado.getSelectionModel().getSelectedItem() != null && fxFechaEntrada.getValue() != null
+                && fxFechaSalida.getValue() != null) {
+
+            if (comprobar == false) {
+                try {
+                    precio = Double.parseDouble(fxPrecio.getText());
+                    comprobar = true;
+                } catch (NumberFormatException e) {
+                    alertWarning.setContentText("Qué cojone hace metiendo cosas raras, mete números subnorgay");
+                    alertWarning.showAndWait();
+                }
+
+            }
+            
+            if (comprobar == true) {
+                //METER ACÁ LO DE BBDD
+            }
+
+        } else {
+            alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
+            alertWarning.showAndWait();
+
+        }
         
 //        Producto pro = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(), 
 //                fxModelo.getText(), fxDescripcion.getText(),

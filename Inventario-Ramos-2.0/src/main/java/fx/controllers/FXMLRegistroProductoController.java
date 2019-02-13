@@ -106,7 +106,7 @@ public class FXMLRegistroProductoController implements Initializable {
         Producto producto;
         int lineas;
         boolean comprobar = false;
-        //double precio = 
+        double precio;
 
         if (!fxNombre.getText().equals("") && !fxPrecio.getText().equals("") && !fxCategoria.getText().equals("")
                 && !fxModelo.getText().equals("") && !fxDescripcion.getText().equals("")
@@ -116,36 +116,39 @@ public class FXMLRegistroProductoController implements Initializable {
                 && fxEstado.getSelectionModel().getSelectedItem() != null && fxFechaEntrada.getValue() != null
                 && fxFechaSalida.getValue() != null) {
 
-//            if (comprobar == false) {
-//                try {
-//                    numero = Integer.parseInt(fxTelefono.getText());
-//                    comprobar = true;
-//                } catch (NumberFormatException e) {
-//                    alertWarning.setContentText("El teléfono sólo tiene números");
-//                    alertWarning.showAndWait();
-//                }
-//
-//            }
+            if (comprobar == false) {
+                try {
+                    precio = Double.parseDouble(fxPrecio.getText());
+                    comprobar = true;
+                } catch (NumberFormatException e) {
+                    alertWarning.setContentText("Qué cojone hace metiendo cosas raras, mete números subnorgay");
+                    alertWarning.showAndWait();
+                }
 
-            Date dateSalida = Date.valueOf(fxFechaSalida.getValue());
-            Date dateEntrada = Date.valueOf(fxFechaEntrada.getValue());
-
-            producto = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(), fxModelo.getText(), fxDescripcion.getText(), fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(), Double.parseDouble(fxPrecio.getText()), dateEntrada, dateSalida, fxEstado.getSelectionModel().getSelectedItem().getIdtipoestado());
-            DAOProductoImpl dao = new DAOProductoImpl();
-
-            lineas = dao.insertar(producto);
-
-            if (lineas < 0) {
-                alertInfo.setContentText("Producto creado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto duplicado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido crear el producto.");
-                alertError.showAndWait();
             }
+            
+            if (comprobar == true) {
+                Date dateSalida = Date.valueOf(fxFechaSalida.getValue());
+                Date dateEntrada = Date.valueOf(fxFechaEntrada.getValue());
+
+                producto = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(), fxModelo.getText(), fxDescripcion.getText(), fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(), Double.parseDouble(fxPrecio.getText()), dateEntrada, dateSalida, fxEstado.getSelectionModel().getSelectedItem().getIdtipoestado());
+                DAOProductoImpl dao = new DAOProductoImpl();
+
+                lineas = dao.insertar(producto);
+
+                if (lineas < 0) {
+                    alertInfo.setContentText("Producto creado.");
+                    alertInfo.showAndWait();
+
+                } else if (lineas == -2) {
+                    alertError.setContentText("Producto duplicado.");
+                    alertError.showAndWait();
+                } else {
+                    alertError.setContentText("No se ha podido crear el producto.");
+                    alertError.showAndWait();
+                }
+            }
+
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
             alertWarning.showAndWait();
