@@ -105,6 +105,8 @@ public class FXMLRegistroProductoController implements Initializable {
     public void clickGuardar() {
         Producto producto;
         int lineas;
+        boolean comprobar = false;
+        //double precio = 
 
         if (!fxNombre.getText().equals("") && !fxPrecio.getText().equals("") && !fxCategoria.getText().equals("")
                 && !fxModelo.getText().equals("") && !fxDescripcion.getText().equals("")
@@ -113,6 +115,17 @@ public class FXMLRegistroProductoController implements Initializable {
                 && fxResponsable.getSelectionModel().getSelectedItem() != null
                 && fxEstado.getSelectionModel().getSelectedItem() != null && fxFechaEntrada.getValue() != null
                 && fxFechaSalida.getValue() != null) {
+
+//            if (comprobar == false) {
+//                try {
+//                    numero = Integer.parseInt(fxTelefono.getText());
+//                    comprobar = true;
+//                } catch (NumberFormatException e) {
+//                    alertWarning.setContentText("El teléfono sólo tiene números");
+//                    alertWarning.showAndWait();
+//                }
+//
+//            }
 
             Date dateSalida = Date.valueOf(fxFechaSalida.getValue());
             Date dateEntrada = Date.valueOf(fxFechaEntrada.getValue());
