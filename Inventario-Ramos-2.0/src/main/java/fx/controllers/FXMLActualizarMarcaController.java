@@ -57,11 +57,27 @@ public class FXMLActualizarMarcaController implements Initializable {
     }
 
     public void clickGuardar() {
+        int lineas;
+        if (fxNombre.getText().equals("") || fxDescripcion.getText().equals("")) {
+            alertWarning.setContentText("No hay datos");
+            alertWarning.showAndWait();
+        } else {
+            Marca marca = new Marca(fxNombre.getText(), fxDescripcion.getText());
+            DAOMarcaImpl dao = new DAOMarcaImpl();
+            lineas = dao.modificar(marca);
 
-        Marca marca = new Marca(fxNombre.getText(), fxDescripcion.getText());
-        DAOMarcaImpl dao = new DAOMarcaImpl();
-        dao.modificar(marca);
+            if (lineas == 1) {
+                alertInfo.setContentText("Producto modificado.");
+                alertInfo.showAndWait();
+            } else if (lineas == -2) {
+                alertError.setContentText("Producto duplicado.");
+                alertError.showAndWait();
+            } else {
+                alertError.setContentText("No se ha podido crear el producto.");
+                alertError.showAndWait();
+            }
 
+        }
     }
 
 }

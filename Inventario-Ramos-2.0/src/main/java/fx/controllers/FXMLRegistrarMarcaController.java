@@ -39,7 +39,7 @@ public class FXMLRegistrarMarcaController implements Initializable {
     public void clickCrear(){
         Marca marca;
         int linea;
-        if(fxNombre.getText().equals("") || fxDescripcion.getText().equals("") || fxCrear.getText().equals("")){
+        if(fxNombre.getText().equals("") || fxDescripcion.getText().equals("")){
             alertWarning.setContentText("No hay datos");
             alertWarning.showAndWait();
         }else{

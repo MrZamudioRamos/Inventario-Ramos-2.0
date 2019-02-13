@@ -31,13 +31,13 @@ public class FXMLDatosController implements Initializable {
 
     @FXML
     private Tab fxProductos;
-    
+
     @FXML
     private Tab fxLugares;
-    
+
     @FXML
     private Tab fxMarcas;
-    
+
     @FXML
     private TableView<Producto> fxTableProductos;
 
@@ -175,7 +175,7 @@ public class FXMLDatosController implements Initializable {
 
             lineas = dao.borrar(producto);
 
-            if (lineas < 0) {
+            if (lineas == 1) {
                 alertInfo.setContentText("Producto eliminado.");
                 alertInfo.showAndWait();
 
@@ -187,11 +187,28 @@ public class FXMLDatosController implements Initializable {
                 alertError.showAndWait();
             }
 
+            mostrar();
+
         } else if (fxTableMarcas.getSelectionModel().getSelectedItem() != null) {
 
             marca = fxTableMarcas.getSelectionModel().getSelectedItem();
 
-            principal.cargarPantallaModificarDatos();
+            DAOMarcaImpl daoM = new DAOMarcaImpl();
+
+            lineas = daoM.borrar(marca);
+
+            if (lineas == 1) {
+                alertInfo.setContentText("Producto eliminado.");
+                alertInfo.showAndWait();
+
+            } else if (lineas == -2) {
+                alertError.setContentText("Producto no eliminado.");
+                alertError.showAndWait();
+            } else {
+                alertError.setContentText("No se ha podido eliminar el producto.");
+                alertError.showAndWait();
+            }
+            mostrar();
 
         } else if (fxTableUbicaciones.getSelectionModel().getSelectedItem() != null) {
 
@@ -199,7 +216,21 @@ public class FXMLDatosController implements Initializable {
 
             DAOUbicacionImpl dao = new DAOUbicacionImpl();
 
-            dao.borrar(ubicacion);
+            lineas = dao.borrar(ubicacion);
+
+            if (lineas == 1) {
+                alertInfo.setContentText("Producto eliminado.");
+                alertInfo.showAndWait();
+
+            } else if (lineas == -2) {
+                alertError.setContentText("Producto no eliminado.");
+                alertError.showAndWait();
+            } else {
+                alertError.setContentText("No se ha podido eliminar el producto.");
+                alertError.showAndWait();
+            }
+
+            mostrar();
 
         } else {
 
@@ -216,17 +247,17 @@ public class FXMLDatosController implements Initializable {
 
             principal.setProducto(fxTableProductos.getSelectionModel().getSelectedItem());
             principal.cargarPantallaActualizarProductos();
-            
+            mostrar();
         } else if (fxTableMarcas.getSelectionModel().getSelectedItem() != null) {
 
             principal.setMarca(fxTableMarcas.getSelectionModel().getSelectedItem());
             principal.cargarPantallaActualizarMarca();
-
+            mostrar();
         } else if (fxTableUbicaciones.getSelectionModel().getSelectedItem() != null) {
 
             principal.setLugar(fxTableUbicaciones.getSelectionModel().getSelectedItem());
             principal.cargarPantallaActualizarLugares();
-
+            mostrar();
         } else {
 
             alertInfo.setContentText("Seleccione un producto o una marca o un lugar.");

@@ -58,9 +58,27 @@ public class FXMLActualizarLugaresController implements Initializable {
     }
 
     public void clickGuardar() {
-        Ubicacion lugar = new Ubicacion(fxNombre.getText(), fxDescripcion.getText());
-        DAOUbicacionImpl dao = new DAOUbicacionImpl();
-        dao.modificar(lugar);
+        int lineas;
+        if (fxNombre.getText().equals("") || fxDescripcion.getText().equals("")) {
+            alertWarning.setContentText("No hay datos");
+            alertWarning.showAndWait();
+        } else {
+            Ubicacion lugar = new Ubicacion(fxNombre.getText(), fxDescripcion.getText());
+            DAOUbicacionImpl dao = new DAOUbicacionImpl();
+            lineas = dao.modificar(lugar);
+
+            if (lineas == 1) {
+                alertInfo.setContentText("Producto modificado.");
+                alertInfo.showAndWait();
+
+            } else if (lineas == -2) {
+                alertError.setContentText("Producto duplicado.");
+                alertError.showAndWait();
+            } else {
+                alertError.setContentText("No se ha podido crear el producto.");
+                alertError.showAndWait();
+            }
+        }
     }
 
 }

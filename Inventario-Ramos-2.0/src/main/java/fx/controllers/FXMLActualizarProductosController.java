@@ -103,7 +103,7 @@ public class FXMLActualizarProductosController implements Initializable {
                 && fxFechaSalida.getValue() != null) {
             Date dateE = Date.valueOf(fxFechaEntrada.getValue());
             Date dateS = Date.valueOf(fxFechaSalida.getValue());
-            Producto pro = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(),
+            Producto pro = new Producto(principal.getProducto().getIdproducto(),fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(),
                     fxModelo.getText(), fxDescripcion.getText(),
                     fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(),
                     Double.parseDouble(fxPrecio.getText()),
@@ -112,8 +112,8 @@ public class FXMLActualizarProductosController implements Initializable {
             DAOProductoImpl dao = new DAOProductoImpl();
             lineas = dao.modificar(pro);
 
-            if (lineas < 0) {
-                alertInfo.setContentText("Producto creado.");
+            if (lineas == 1) {
+                alertInfo.setContentText("Producto modificado.");
                 alertInfo.showAndWait();
 
             } else if (lineas == -2) {
