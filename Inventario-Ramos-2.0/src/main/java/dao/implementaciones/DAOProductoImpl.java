@@ -70,7 +70,7 @@ public class DAOProductoImpl implements DAOProducto {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    "UPDATE producto set nombre = ?,  categoria = ?,  marca= ?,  modelo = ?,  descripcion= ?,  ubicacion = ?,  responsable= ?,  fecha_entrada= ?,  fecha_salida = ?,  estado= ? where idproducto=?",
+                    "UPDATE producto set nombre = ?,  categoria = ?,  marca= ?,  modelo = ?,  descripcion= ?,  ubicacion = ?,  responsable= ?, precio = ?, fecha_entrada= ?, fecha_salida = ?,  estado= ? where idproducto=?",
                     a.getNombre(),
                     a.getCategoria(),
                     a.getMarca(),
@@ -78,12 +78,14 @@ public class DAOProductoImpl implements DAOProducto {
                     a.getDescripcion(),
                     a.getUbicacion(),
                     a.getResponsable(),
+                    a.getPrecio(),
                     a.getFecha_entrada(),
                     a.getFecha_salida(),
                     a.getEstado(),
                     a.getIdproducto());
 
         } catch (Exception ex) {
+            filas = -1;
             Logger.getLogger(DAOProductoImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);
@@ -119,7 +121,7 @@ public class DAOProductoImpl implements DAOProducto {
 
     @Override
     public int borrarEntero(Producto a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override

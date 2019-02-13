@@ -8,6 +8,7 @@ package fx.controllers;
 import dao.implementaciones.DAOProductoImpl;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -91,10 +92,8 @@ public class FXMLActualizarProductosController implements Initializable {
     }
 
     public void clickGuardar() {
-        
-        boolean comprobar = false;
-        double precio;
-        
+        int lineas;
+
         if (!fxNombre.getText().equals("") && !fxPrecio.getText().equals("") && !fxCategoria.getText().equals("")
                 && !fxModelo.getText().equals("") && !fxDescripcion.getText().equals("")
                 && fxMarca.getSelectionModel().getSelectedItem() != null
@@ -102,35 +101,35 @@ public class FXMLActualizarProductosController implements Initializable {
                 && fxResponsable.getSelectionModel().getSelectedItem() != null
                 && fxEstado.getSelectionModel().getSelectedItem() != null && fxFechaEntrada.getValue() != null
                 && fxFechaSalida.getValue() != null) {
+            Date dateE = Date.valueOf(fxFechaEntrada.getValue());
+            Date dateS = Date.valueOf(fxFechaSalida.getValue());
+            Producto pro = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(),
+                    fxModelo.getText(), fxDescripcion.getText(),
+                    fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(),
+                    Double.parseDouble(fxPrecio.getText()),
+                    dateE, dateS, fxEstado.getSelectionModel().getSelectedItem().getIdtipoestado());
 
-            if (comprobar == false) {
-                try {
-                    precio = Double.parseDouble(fxPrecio.getText());
-                    comprobar = true;
-                } catch (NumberFormatException e) {
-                    alertWarning.setContentText("Qué cojone hace metiendo cosas raras, mete números subnorgay");
-                    alertWarning.showAndWait();
-                }
+            DAOProductoImpl dao = new DAOProductoImpl();
+            lineas = dao.modificar(pro);
 
+            if (lineas < 0) {
+                alertInfo.setContentText("Producto creado.");
+                alertInfo.showAndWait();
+
+            } else if (lineas == -2) {
+                alertError.setContentText("Producto duplicado.");
+                alertError.showAndWait();
+            } else {
+                alertError.setContentText("No se ha podido crear el producto.");
+                alertError.showAndWait();
             }
-            
-            if (comprobar == true) {
-                //METER ACÁ LO DE BBDD
-            }
-
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
             alertWarning.showAndWait();
 
         }
-        
-//        Producto pro = new Producto(fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(), 
-//                fxModelo.getText(), fxDescripcion.getText(),
-//                fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(),
-//                Double.parseDouble(fxPrecio.getText()),
-//                        fxFechaEntrada.getValue(), fxFechaSalida.getValue(), 0);
-
     }
+
     private Alert alertWarning;
     private Alert alertInfo;
     private Alert alertError;
