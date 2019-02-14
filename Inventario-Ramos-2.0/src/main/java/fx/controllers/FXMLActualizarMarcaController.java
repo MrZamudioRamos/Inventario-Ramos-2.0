@@ -67,13 +67,13 @@ public class FXMLActualizarMarcaController implements Initializable {
             lineas = dao.modificar(marca);
 
             if (lineas == 1) {
-                alertInfo.setContentText("Producto modificado.");
+                alertInfo.setContentText("Marca modificada.");
                 alertInfo.showAndWait();
             } else if (lineas == -2) {
-                alertError.setContentText("Producto duplicado.");
+                alertError.setContentText("Marca duplicada.");
                 alertError.showAndWait();
             } else {
-                alertError.setContentText("No se ha podido crear el producto.");
+                alertError.setContentText("No se ha podido modificar la marca.");
                 alertError.showAndWait();
             }
 
