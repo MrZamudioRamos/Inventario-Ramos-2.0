@@ -39,6 +39,17 @@ public class User {
         this.dni = dni;
     }
 
+    public User(int idusuario, String nombre, String apellido, String telefono, String mail, String user, boolean invent, boolean admin) {
+        this.idusuario = idusuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.user = user;
+        this.invent = invent;
+        this.admin = admin;
+    }
+
     public int getIdUsuario() {
         return idusuario;
     }
@@ -131,7 +142,5 @@ public class User {
     public String toString() {
         return "User{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", mail=" + mail + ", user=" + user + ", password=" + password + ", dni=" + dni + ", invent=" + invent + ", admin=" + admin + '}';
     }
-
-
 
 }

@@ -70,19 +70,18 @@ public class DAOUsuariosImpl implements DAOUsuarios {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    "UPDATE items set nombre = ?,  apellido = ?,  telefono= ?,  e-mail = ?, user = ?,  password= ?,  dni = ?,  tipo= ? where idusuario=?",
+                    "UPDATE usuarios set nombre = ?, user = ?, apellido = ?,  telefono= ?,  mail = ?, invent = ?, admin = ? where idusuario=?",
                     a.getNombre(),
+                    a.getUser(),
                     a.getApellido(),
                     a.getTelefono(),
                     a.getMail(),
-                    a.getUser(),
-                    a.getPassword(),
-                    a.getDni(),
                     a.isInvent(),
                     a.isAdmin(),
                     a.getIdUsuario());
 
         } catch (Exception ex) {
+            filas = -2;
             Logger.getLogger(DAOUsuariosImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);

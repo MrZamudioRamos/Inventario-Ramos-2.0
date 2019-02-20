@@ -7,18 +7,13 @@ package fx.controllers;
 
 import dao.implementaciones.DAOUsuariosImpl;
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import model.User;
-import util.PasswordHash;
 
 /**
  * FXML Controller class
@@ -75,7 +70,8 @@ public class FXMLModificarUserController implements Initializable {
 
         int numero;
         boolean comprobar = false;
-
+        DAOUsuariosImpl dao = new DAOUsuariosImpl();
+        int idUser = principal.getUsuario().getIdUsuario();
         if (!fxNombre.getText().equals("")
                 && !fxApellidos.getText().equals("")
                 && !fxTelefono.getText().equals("")
@@ -94,7 +90,62 @@ public class FXMLModificarUserController implements Initializable {
                 }
 
                 if (comprobar == true) {
-                    //METER ACÁ LO DE BBDD
+                    if (fxInventariador.isSelected() && fxAdministrador.isSelected()) {
+                        
+                        User user = new User(idUser,fxNombre.getText(), fxApellidos.getText(), fxTelefono.getText(), fxMail.getText(), fxUser.getText(), true, true);
+                        int num = dao.modificar(user);
+
+                        switch (num) {
+                            case 1:
+                                alertInfo.setContentText("Usuario modificado.");
+                                alertInfo.showAndWait();
+                                break;
+                            case -2:
+                                alertError.setContentText("Usuario duplicado.");
+                                alertError.showAndWait();
+                                break;
+                            default:
+                                alertError.setContentText("No se ha podido modificar el usuario.");
+                                alertError.showAndWait();
+                                break;
+                        }
+                    } else if (!fxInventariador.isSelected() && fxAdministrador.isSelected()) {
+                        User user = new User(idUser,fxNombre.getText(), fxApellidos.getText(), fxTelefono.getText(), fxMail.getText(), fxUser.getText(), false, true);
+                        int num = dao.modificar(user);
+
+                        switch (num) {
+                            case 1:
+                                alertInfo.setContentText("Usuario modificado.");
+                                alertInfo.showAndWait();
+                                break;
+                            case -2:
+                                alertError.setContentText("Usuario duplicado.");
+                                alertError.showAndWait();
+                                break;
+                            default:
+                                alertError.setContentText("No se ha podido modificar el usuario.");
+                                alertError.showAndWait();
+                                break;
+                        }
+                    } else if (fxInventariador.isSelected() && !fxAdministrador.isSelected()) {
+                        User user = new User(idUser,fxNombre.getText(), fxApellidos.getText(), fxTelefono.getText(), fxMail.getText(), fxUser.getText(), true, false);
+                        int num = dao.modificar(user);
+
+                        switch (num) {
+                            case 1:
+                                alertInfo.setContentText("Usuario modificado.");
+                                alertInfo.showAndWait();
+                                break;
+                            case -2:
+                                alertError.setContentText("Usuario duplicado.");
+                                alertError.showAndWait();
+                                break;
+                            default:
+                                alertError.setContentText("No se ha podido modificar el usuario.");
+                                alertError.showAndWait();
+                                break;
+                        }
+                    }
                 }
 
             } else {

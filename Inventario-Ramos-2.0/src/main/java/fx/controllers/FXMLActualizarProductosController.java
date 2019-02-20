@@ -112,16 +112,19 @@ public class FXMLActualizarProductosController implements Initializable {
             DAOProductoImpl dao = new DAOProductoImpl();
             lineas = dao.modificar(pro);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Producto modificado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto duplicado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido crear el producto.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Producto modificado.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Producto duplicado.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido crear el producto.");
+                    alertError.showAndWait();
+                    break;
             }
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
