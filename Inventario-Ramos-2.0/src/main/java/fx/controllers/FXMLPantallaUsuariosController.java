@@ -32,7 +32,10 @@ public class FXMLPantallaUsuariosController implements Initializable {
     private TableColumn<User, String> fxUser;
 
     @FXML
-    private TableColumn<User, Integer> fxTipo;
+    private TableColumn<User, Boolean> fxTipo;
+    
+    @FXML
+    private TableColumn<User, Boolean> fxTipo2;
 
     private User usuarioAModificar;
 
@@ -68,20 +71,28 @@ public class FXMLPantallaUsuariosController implements Initializable {
         if (fxTableUser.getSelectionModel().getSelectedItem() != null) {
             usuarioAModificar = fxTableUser.getSelectionModel().getSelectedItem();
             DAOUsuariosImpl daou = new DAOUsuariosImpl();
-            int lineas = daou.borrar(usuarioAModificar);
-            switch (lineas) {
-                case 1:
-                    alertInfo.setContentText("Usuario eliminado.");
-                    alertInfo.showAndWait();
-                    break;
-                case -2:
-                    alertError.setContentText("Usuario no eliminado.");
-                    alertError.showAndWait();
-                    break;
-                default:
-                    alertError.setContentText("No se ha podido eliminar el usuario.");
-                    alertError.showAndWait();
-                    break;
+            if (usuarioAModificar.getNombre().equals("root")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("No se puede borrar el usuario root. Gracias.");
+                alert.showAndWait();
+            } else {
+                int lineas = daou.borrar(usuarioAModificar);
+                switch (lineas) {
+                    case 1:
+                        alertInfo.setContentText("Usuario eliminado.");
+                        alertInfo.showAndWait();
+                        break;
+                    case -2:
+                        alertError.setContentText("Usuario no eliminado.");
+                        alertError.showAndWait();
+                        break;
+                    default:
+                        alertError.setContentText("No se ha podido eliminar el usuario.");
+                        alertError.showAndWait();
+                        break;
+                }
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -90,9 +101,9 @@ public class FXMLPantallaUsuariosController implements Initializable {
             alert.setContentText("Seleccione un usuario para eliminar. Gracias.");
             alert.showAndWait();
         }
-        
+
         mostrar();
-        
+
     }
 
     public void mostrar() {
@@ -100,6 +111,9 @@ public class FXMLPantallaUsuariosController implements Initializable {
         fxTableUser.getItems().addAll(principal.getUsers());
         fxId.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getIdUsuario()));
         fxUser.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUser()));
+        fxTipo.setCellValueFactory(c -> new SimpleObjectProperty(c.getValue().isAdmin()));
+        fxTipo2.setCellValueFactory(c -> new SimpleObjectProperty(c.getValue().isInvent()));
+        
     }
 
     @Override

@@ -18,7 +18,8 @@
         <columns>
           <TableColumn fx:id="fxId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="fxUser" prefWidth="102.0" text="USUARIO" />
-            <TableColumn fx:id="fxTipo" prefWidth="105.0" text="TIPO" />
+            <TableColumn fx:id="fxTipo" prefWidth="100.0" text="ADMIN" />
+            <TableColumn fx:id="fxTipo2" prefWidth="110.0" text="INVENT" />
         </columns>
       </TableView>
       <Label layoutX="56.0" layoutY="56.0" prefHeight="15.0" prefWidth="125.0" text="LISTA DE USUARIOS:">

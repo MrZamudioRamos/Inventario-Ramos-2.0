@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLActualizarMarcaController">
+<AnchorPane id="AnchorPane" centerShape="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="438.0" prefWidth="634.0" style="-fx-background-color: #a3e545;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.FXMLActualizarMarcaController">
     <children>
       <Label layoutX="184.0" layoutY="51.0" text="Actualizar marca">
          <font>
@@ -28,4 +29,7 @@
       <Button fx:id="fxCrear" layoutX="159.0" layoutY="308.0" mnemonicParsing="false" onAction="#clickGuardar" prefHeight="44.0" prefWidth="102.0" text="GUARDAR" />
       <Button layoutX="334.0" layoutY="308.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="44.0" prefWidth="102.0" text="VOLVER" />
    </children>
+   <padding>
+      <Insets bottom="11.0" left="11.0" right="11.0" top="11.0" />
+   </padding>
 </AnchorPane>
