@@ -115,6 +115,13 @@ public class FXMLRegistroUsuarioController implements Initializable {
                         if (lineas < 0) {
                             alertInfo.setContentText("Usuario creado.");
                             alertInfo.showAndWait();
+                            fxNombre.clear();
+                            fxApellidos.clear();
+                            fxTelefono.clear();
+                            fxMail.clear();
+                            fxContrasenia.clear();
+                            fxUser.clear();
+                            fxDni.clear();
 
                         } else if (lineas == -2) {
                             alertError.setContentText("Usuario duplicado.");

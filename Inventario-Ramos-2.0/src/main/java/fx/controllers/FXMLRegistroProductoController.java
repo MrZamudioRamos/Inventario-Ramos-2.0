@@ -121,7 +121,7 @@ public class FXMLRegistroProductoController implements Initializable {
                     precio = Double.parseDouble(fxPrecio.getText());
                     comprobar = true;
                 } catch (NumberFormatException e) {
-                    alertWarning.setContentText("Qué cojone hace metiendo cosas raras, mete números subnorgay");
+                    alertWarning.setContentText("Mete números en el precio");
                     alertWarning.showAndWait();
                 }
 

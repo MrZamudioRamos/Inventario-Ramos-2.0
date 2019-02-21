@@ -8,7 +8,6 @@ package fx.controllers;
 import dao.implementaciones.DAOProductoImpl;
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -93,6 +92,8 @@ public class FXMLActualizarProductosController implements Initializable {
 
     public void clickGuardar() {
         int lineas;
+        double precio;
+        boolean comprobar = false;
 
         if (!fxNombre.getText().equals("") && !fxPrecio.getText().equals("") && !fxCategoria.getText().equals("")
                 && !fxModelo.getText().equals("") && !fxDescripcion.getText().equals("")
@@ -101,31 +102,44 @@ public class FXMLActualizarProductosController implements Initializable {
                 && fxResponsable.getSelectionModel().getSelectedItem() != null
                 && fxEstado.getSelectionModel().getSelectedItem() != null && fxFechaEntrada.getValue() != null
                 && fxFechaSalida.getValue() != null) {
-            Date dateE = Date.valueOf(fxFechaEntrada.getValue());
-            Date dateS = Date.valueOf(fxFechaSalida.getValue());
-            Producto pro = new Producto(principal.getProducto().getIdproducto(),fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(),
-                    fxModelo.getText(), fxDescripcion.getText(),
-                    fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(),
-                    Double.parseDouble(fxPrecio.getText()),
-                    dateE, dateS, fxEstado.getSelectionModel().getSelectedItem().getIdtipoestado());
-
-            DAOProductoImpl dao = new DAOProductoImpl();
-            lineas = dao.modificar(pro);
-
-            switch (lineas) {
-                case 1:
-                    alertInfo.setContentText("Producto modificado.");
-                    alertInfo.showAndWait();
-                    break;
-                case -2:
-                    alertError.setContentText("Producto duplicado.");
-                    alertError.showAndWait();
-                    break;
-                default:
-                    alertError.setContentText("No se ha podido crear el producto.");
-                    alertError.showAndWait();
-                    break;
+            if (comprobar == false) {
+                try {
+                    precio = Double.parseDouble(fxPrecio.getText());
+                    comprobar = true;
+                } catch (NumberFormatException e) {
+                    alertWarning.setContentText("Mete números en el precio");
+                    alertWarning.showAndWait();
+                }
             }
+
+            if (comprobar == true) {
+                Date dateE = Date.valueOf(fxFechaEntrada.getValue());
+                Date dateS = Date.valueOf(fxFechaSalida.getValue());
+                Producto pro = new Producto(principal.getProducto().getIdproducto(), fxNombre.getText(), fxCategoria.getText(), fxMarca.getSelectionModel().getSelectedItem().getIdmarca(),
+                        fxModelo.getText(), fxDescripcion.getText(),
+                        fxUbicacion.getSelectionModel().getSelectedItem().getIdubicacion(), fxResponsable.getSelectionModel().getSelectedItem().getIdUsuario(),
+                        Double.parseDouble(fxPrecio.getText()),
+                        dateE, dateS, fxEstado.getSelectionModel().getSelectedItem().getIdtipoestado());
+
+                DAOProductoImpl dao = new DAOProductoImpl();
+                lineas = dao.modificar(pro);
+
+                switch (lineas) {
+                    case 1:
+                        alertInfo.setContentText("Producto modificado.");
+                        alertInfo.showAndWait();
+                        break;
+                    case -2:
+                        alertError.setContentText("Producto duplicado.");
+                        alertError.showAndWait();
+                        break;
+                    default:
+                        alertError.setContentText("No se ha podido crear el producto.");
+                        alertError.showAndWait();
+                        break;
+                }
+            }
+
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
             alertWarning.showAndWait();
