@@ -74,6 +74,8 @@ public class FXMLPrincipalController implements Initializable {
     private FXMLActualizarMarcaController actualizarMarcaController;
     private AnchorPane pantallaActualizarProductos;
     private FXMLActualizarProductosController actualizarProductosController;
+    private AnchorPane pantallaDatosUbicacion;
+    private FXMLDatosUbicacionController actualizarDatosUbicacionController;
 
     private ObservableList<Marca> marcas = FXCollections.observableArrayList();
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
@@ -349,6 +351,22 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLActualizarProductosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @FXML
+    public void precargarPantallaDatosUbicacion() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLDatosUbicacion.fxml"));
+            pantallaDatosUbicacion = loaderMenu.load();
+            actualizarDatosUbicacionController
+                    = loaderMenu.getController();
+            actualizarDatosUbicacionController.setPrincipal(this);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDatosUbicacionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     //CARGAR PANTALLAS
     @FXML
@@ -459,6 +477,12 @@ public class FXMLPrincipalController implements Initializable {
         fxRoot.setCenter(pantallaActualizarProductos);
         fxMenu.setVisible(true);
     }
+    
+    @FXML
+    public void cargarPantallaDatosUbicacion() {
+        fxRoot.setCenter(pantallaDatosUbicacion);
+        fxMenu.setVisible(true);
+    }
 
     public void clickOpciones() {
         cargarPantallaOpciones();
@@ -512,6 +536,7 @@ public class FXMLPrincipalController implements Initializable {
         precargarPantallaActualizarLugar();
         precargarPantallaActualizarMarca();
         precargarPantallaActualizarProductos();
+        precargarPantallaDatosUbicacion();
         cargarPantallaLogin();
     }
 

@@ -64,7 +64,7 @@ public class FXMLMenuOpcionesController implements Initializable {
     }
 
     public void listarLugar() {
-        principal.cargarPantallaDatos();
+        principal.cargarPantallaDatosUbicacion();
     }
 
     public void registrarLugar() {
