@@ -58,6 +58,9 @@ public class FXMLRegistrarMarcaController implements Initializable {
                 alertError.setContentText("No se ha podido crear la marca");
                 alertError.showAndWait();
             }
+
+            fxNombre.clear();
+            fxDescripcion.clear();
         }
     }
     

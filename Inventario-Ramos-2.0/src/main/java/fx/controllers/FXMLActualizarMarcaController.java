@@ -82,6 +82,9 @@ public class FXMLActualizarMarcaController implements Initializable {
                     alertError.showAndWait();
                     break;
             }
+            
+            fxNombre.clear();
+            fxDescripcion.clear();
 
        }
     }

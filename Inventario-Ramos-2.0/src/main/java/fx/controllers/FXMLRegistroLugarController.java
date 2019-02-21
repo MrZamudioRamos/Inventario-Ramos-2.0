@@ -78,6 +78,9 @@ public class FXMLRegistroLugarController implements Initializable {
                 alertError.setContentText("No se ha podido crear la ubicación.");
                 alertError.showAndWait();
             }
+            fxNombre.clear();
+            fxDescripcion.clear();
+            fxFecha.setValue(null);
         } else {
             alertWarning.setContentText("No hay datos");
             alertWarning.showAndWait();

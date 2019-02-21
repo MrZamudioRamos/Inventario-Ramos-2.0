@@ -81,6 +81,9 @@ public class FXMLActualizarLugaresController implements Initializable {
                     alertError.showAndWait();
                     break;
             }
+            
+            fxNombre.clear();
+            fxDescripcion.clear();
         }
     }
 

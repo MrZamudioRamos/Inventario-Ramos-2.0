@@ -139,6 +139,18 @@ public class FXMLActualizarProductosController implements Initializable {
                         break;
                 }
             }
+            
+            fxNombre.clear();
+            fxCategoria.clear();
+            fxMarca.setValue(null);
+            fxModelo.clear();
+            fxPrecio.clear();
+            fxDescripcion.clear();
+            fxUbicacion.setValue(null);
+            fxResponsable.setValue(null);
+            fxEstado.setValue(null);
+            fxFechaEntrada.setValue(null);
+            fxFechaSalida.setValue(null);
 
         } else {
             alertWarning.setContentText("No deje espacios sin rellenar o sin seleccionar.");
