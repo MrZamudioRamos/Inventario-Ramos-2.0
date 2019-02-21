@@ -67,16 +67,19 @@ public class FXMLActualizarLugaresController implements Initializable {
             DAOUbicacionImpl dao = new DAOUbicacionImpl();
             lineas = dao.modificar(lugar);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Producto modificado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto duplicado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido crear el producto.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Producto modificado.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Producto duplicado.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido crear el producto.");
+                    alertError.showAndWait();
+                    break;
             }
         }
     }

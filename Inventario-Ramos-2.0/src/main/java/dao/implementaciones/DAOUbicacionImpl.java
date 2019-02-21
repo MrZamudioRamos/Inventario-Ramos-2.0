@@ -65,7 +65,7 @@ public class DAOUbicacionImpl implements DAOUbicacion {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    "UPDATE ubicacion set nombre = ?,  descripcion = ? where idubicacion=?",
+                    "update ubicacion set nombre = ?,  descripcion = ? where idubicacion=?",
                     a.getNombre(),
                     a.getDescripcion(),
                     a.getIdubicacion());

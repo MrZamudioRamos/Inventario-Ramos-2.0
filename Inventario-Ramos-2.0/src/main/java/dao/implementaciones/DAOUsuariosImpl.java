@@ -91,7 +91,27 @@ public class DAOUsuariosImpl implements DAOUsuarios {
 
     @Override
     public int borrar(User a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int filas = -1;
+        Connection con = null;
+         try {
+            con = DBConnectionPool.getInstance().getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            filas = qr.update(con,
+                    "delete from usuarios "
+                    + "where idusuario = ?", a.getIdUsuario());
+        } catch (SQLException e) {
+            filas = -2;
+            if (e.getMessage().contains("violación")) {
+                filas = -2;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOProductoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnectionPool.getInstance().cerrarConexion(con);
+        }
+        return filas;
     }
 
     @Override

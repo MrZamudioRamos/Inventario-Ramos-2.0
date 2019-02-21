@@ -87,6 +87,7 @@ public class DAOProductoImpl implements DAOProducto {
         } catch (Exception ex) {
             filas = -1;
             Logger.getLogger(DAOProductoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);
         }

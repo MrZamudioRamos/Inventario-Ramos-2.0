@@ -175,16 +175,19 @@ public class FXMLDatosController implements Initializable {
 
             lineas = dao.borrar(producto);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Producto eliminado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto no eliminado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido eliminar el producto.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Producto eliminado.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Producto no eliminado.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido eliminar el producto.");
+                    alertError.showAndWait();
+                    break;
             }
 
             mostrar();
@@ -197,16 +200,19 @@ public class FXMLDatosController implements Initializable {
 
             lineas = daoM.borrar(marca);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Producto eliminado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto no eliminado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido eliminar el producto.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Producto eliminado.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Producto no eliminado.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido eliminar el producto.");
+                    alertError.showAndWait();
+                    break;
             }
             mostrar();
 
@@ -218,16 +224,19 @@ public class FXMLDatosController implements Initializable {
 
             lineas = dao.borrar(ubicacion);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Producto eliminado.");
-                alertInfo.showAndWait();
-
-            } else if (lineas == -2) {
-                alertError.setContentText("Producto no eliminado.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido eliminar el producto.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Producto eliminado.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Producto no eliminado.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido eliminar el producto.");
+                    alertError.showAndWait();
+                    break;
             }
 
             mostrar();

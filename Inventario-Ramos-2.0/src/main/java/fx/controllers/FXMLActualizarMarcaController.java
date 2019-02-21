@@ -66,15 +66,19 @@ public class FXMLActualizarMarcaController implements Initializable {
             DAOMarcaImpl dao = new DAOMarcaImpl();
             lineas = dao.modificar(marca);
 
-            if (lineas == 1) {
-                alertInfo.setContentText("Marca modificada.");
-                alertInfo.showAndWait();
-            } else if (lineas == -2) {
-                alertError.setContentText("Marca duplicada.");
-                alertError.showAndWait();
-            } else {
-                alertError.setContentText("No se ha podido modificar la marca.");
-                alertError.showAndWait();
+            switch (lineas) {
+                case 1:
+                    alertInfo.setContentText("Marca modificada.");
+                    alertInfo.showAndWait();
+                    break;
+                case -2:
+                    alertError.setContentText("Marca duplicada.");
+                    alertError.showAndWait();
+                    break;
+                default:
+                    alertError.setContentText("No se ha podido modificar la marca.");
+                    alertError.showAndWait();
+                    break;
             }
 
         }

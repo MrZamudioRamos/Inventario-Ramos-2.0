@@ -70,6 +70,8 @@ public class DAOMarcaImpl implements DAOMarca {
 
         } catch (Exception ex) {
             Logger.getLogger(DAOMarcaImpl.class.getName()).log(Level.SEVERE, null, ex);
+            filas = -2;
+            System.out.println(ex.getMessage());
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);
         }

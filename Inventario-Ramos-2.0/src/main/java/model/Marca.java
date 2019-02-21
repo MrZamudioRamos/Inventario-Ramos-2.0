@@ -17,7 +17,6 @@ public class Marca {
 
     public Marca() {
     }
-    
 
     public Marca(int idmarca, String nombre, String descripcion) {
         this.idmarca = idmarca;
@@ -38,12 +37,12 @@ public class Marca {
         this.idmarca = idmarca;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public String getDescripcion() {
