@@ -158,5 +158,6 @@ public class Producto {
     public String toString() {
         return "Producto{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", categoria=" + categoria + ", marca=" + marca + ", modelo=" + modelo + ", descripcion=" + descripcion + ", ubicacion=" + ubicacion + ", responsable=" + responsable + ", precio=" + precio + ", fecha_entrada=" + fecha_entrada + ", fecha_salida=" + fecha_salida + ", estado=" + estado + '}';
     }
+    
 
 }
