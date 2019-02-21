@@ -71,15 +71,15 @@ public class FXMLPantallaUsuariosController implements Initializable {
             int lineas = daou.borrar(usuarioAModificar);
             switch (lineas) {
                 case 1:
-                    alertInfo.setContentText("Producto eliminado.");
+                    alertInfo.setContentText("Usuario eliminado.");
                     alertInfo.showAndWait();
                     break;
                 case -2:
-                    alertError.setContentText("Producto no eliminado.");
+                    alertError.setContentText("Usuario no eliminado.");
                     alertError.showAndWait();
                     break;
                 default:
-                    alertError.setContentText("No se ha podido eliminar el producto.");
+                    alertError.setContentText("No se ha podido eliminar el usuario.");
                     alertError.showAndWait();
                     break;
             }
@@ -90,7 +90,9 @@ public class FXMLPantallaUsuariosController implements Initializable {
             alert.setContentText("Seleccione un usuario para eliminar. Gracias.");
             alert.showAndWait();
         }
-
+        
+        mostrar();
+        
     }
 
     public void mostrar() {
