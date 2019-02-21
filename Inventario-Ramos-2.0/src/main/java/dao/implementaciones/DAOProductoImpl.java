@@ -106,13 +106,15 @@ public class DAOProductoImpl implements DAOProducto {
 
             filas = qr.update(con,
                     "delete from producto "
-                    + "where id_producto = ?", a.getIdproducto());
+                    + "where idproducto = ?", a.getIdproducto());
         } catch (SQLException e) {
             filas = -2;
+            System.out.println(e.getMessage());
             if (e.getMessage().contains("violación")) {
                 filas = -2;
             }
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             Logger.getLogger(DAOProductoImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);

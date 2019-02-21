@@ -190,8 +190,6 @@ public class FXMLDatosController implements Initializable {
                     break;
             }
 
-            mostrar();
-
         } else if (fxTableMarcas.getSelectionModel().getSelectedItem() != null) {
 
             marca = fxTableMarcas.getSelectionModel().getSelectedItem();
@@ -214,7 +212,6 @@ public class FXMLDatosController implements Initializable {
                     alertError.showAndWait();
                     break;
             }
-            mostrar();
 
         } else if (fxTableUbicaciones.getSelectionModel().getSelectedItem() != null) {
 
@@ -239,15 +236,14 @@ public class FXMLDatosController implements Initializable {
                     break;
             }
 
-            mostrar();
-
         } else {
 
             alertInfo.setContentText("Seleccione un producto o una marca o un lugar.");
             alertInfo.showAndWait();
 
         }
-
+        vaciar();
+        mostrar();
     }
 
     public void clickActualizar() {
