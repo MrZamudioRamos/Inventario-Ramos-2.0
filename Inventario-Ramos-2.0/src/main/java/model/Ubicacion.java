@@ -21,7 +21,8 @@ public class Ubicacion {
     public Ubicacion() {
     }
 
-    public Ubicacion(String nombre, String descripcion) {
+    public Ubicacion(int idubicacion,String nombre, String descripcion) {
+        this.idubicacion = idubicacion;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }

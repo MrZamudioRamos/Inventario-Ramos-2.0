@@ -258,8 +258,8 @@ public class FXMLDatosController implements Initializable {
             principal.cargarPantallaActualizarProductos();
             mostrar();
         } else if (fxTableMarcas.getSelectionModel().getSelectedItem() != null) {
-
-            principal.setMarca(fxTableMarcas.getSelectionModel().getSelectedItem());
+            marca = fxTableMarcas.getSelectionModel().getSelectedItem();
+            principal.setMarca(marca);
             principal.cargarPantallaActualizarMarca();
             mostrar();
         } else if (fxTableUbicaciones.getSelectionModel().getSelectedItem() != null) {

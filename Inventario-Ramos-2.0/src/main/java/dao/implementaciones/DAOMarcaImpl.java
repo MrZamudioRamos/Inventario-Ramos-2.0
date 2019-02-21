@@ -63,7 +63,7 @@ public class DAOMarcaImpl implements DAOMarca {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    "UPDATE marca set nombre = ?,  descripcion = ? where idmarca=?",
+                    "UPDATE marca set nombre = ?,  descripcion = ? where idmarca = ?",
                     a.getNombre(),
                     a.getDescripcion(),
                     a.getIdmarca());

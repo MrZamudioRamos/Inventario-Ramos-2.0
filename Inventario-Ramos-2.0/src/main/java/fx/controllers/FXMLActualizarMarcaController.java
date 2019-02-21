@@ -62,8 +62,10 @@ public class FXMLActualizarMarcaController implements Initializable {
             alertWarning.setContentText("No hay datos");
             alertWarning.showAndWait();
         } else {
-            Marca marca = new Marca(fxNombre.getText(), fxDescripcion.getText());
+            Marca marca = new Marca(principal.getMarca().getIdmarca(),fxNombre.getText(), fxDescripcion.getText());
+            
             DAOMarcaImpl dao = new DAOMarcaImpl();
+            
             lineas = dao.modificar(marca);
 
             switch (lineas) {
@@ -81,7 +83,7 @@ public class FXMLActualizarMarcaController implements Initializable {
                     break;
             }
 
-        }
+       }
     }
 
 }

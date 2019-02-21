@@ -63,7 +63,7 @@ public class FXMLActualizarLugaresController implements Initializable {
             alertWarning.setContentText("No hay datos");
             alertWarning.showAndWait();
         } else {
-            Ubicacion lugar = new Ubicacion(fxNombre.getText(), fxDescripcion.getText());
+            Ubicacion lugar = new Ubicacion(principal.getLugar().getIdubicacion(),fxNombre.getText(), fxDescripcion.getText());
             DAOUbicacionImpl dao = new DAOUbicacionImpl();
             lineas = dao.modificar(lugar);
 
