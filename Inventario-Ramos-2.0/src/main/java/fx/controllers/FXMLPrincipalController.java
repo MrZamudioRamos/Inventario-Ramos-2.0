@@ -480,6 +480,8 @@ public class FXMLPrincipalController implements Initializable {
     
     @FXML
     public void cargarPantallaDatosUbicacion() {
+        actualizarDatosUbicacionController.vaciar();
+        actualizarDatosUbicacionController.mostrar();
         fxRoot.setCenter(pantallaDatosUbicacion);
         fxMenu.setVisible(true);
     }
